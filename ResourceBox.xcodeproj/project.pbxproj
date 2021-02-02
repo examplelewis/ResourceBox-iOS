@@ -17,6 +17,9 @@
 		AC89B07025C9A48700BA2AA4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89B06F25C9A48700BA2AA4 /* main.m */; };
 		AC89B07A25C9A48800BA2AA4 /* ResourceBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89B07925C9A48800BA2AA4 /* ResourceBoxTests.m */; };
 		AC89B08525C9A48800BA2AA4 /* ResourceBoxUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89B08425C9A48800BA2AA4 /* ResourceBoxUITests.m */; };
+		AC89B0C725C9A90900BA2AA4 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89B0C625C9A90900BA2AA4 /* ShareViewController.m */; };
+		AC89B0CA25C9A90900BA2AA4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC89B0C825C9A90900BA2AA4 /* MainInterface.storyboard */; };
+		AC89B0CE25C9A90900BA2AA4 /* RBShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC89B0C325C9A90900BA2AA4 /* RBShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +37,28 @@
 			remoteGlobalIDString = AC89B05925C9A48500BA2AA4;
 			remoteInfo = ResourceBox;
 		};
+		AC89B0CC25C9A90900BA2AA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC89B05225C9A48500BA2AA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC89B0C225C9A90900BA2AA4;
+			remoteInfo = RBShareExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AC89B0CF25C9A90900BA2AA4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AC89B0CE25C9A90900BA2AA4 /* RBShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		443ECD9118C6053C2785C383 /* Pods-ResourceBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceBox.release.xcconfig"; path = "Target Support Files/Pods-ResourceBox/Pods-ResourceBox.release.xcconfig"; sourceTree = "<group>"; };
@@ -57,6 +81,11 @@
 		AC89B08025C9A48800BA2AA4 /* ResourceBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResourceBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC89B08425C9A48800BA2AA4 /* ResourceBoxUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResourceBoxUITests.m; sourceTree = "<group>"; };
 		AC89B08625C9A48800BA2AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC89B0C325C9A90900BA2AA4 /* RBShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RBShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC89B0C525C9A90900BA2AA4 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		AC89B0C625C9A90900BA2AA4 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		AC89B0C925C9A90900BA2AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		AC89B0CB25C9A90900BA2AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F57E1A2A00F57401B6EBB773 /* libPods-ResourceBox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ResourceBox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,6 +112,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AC89B0C025C9A90900BA2AA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -101,6 +137,7 @@
 				AC89B05C25C9A48500BA2AA4 /* ResourceBox */,
 				AC89B07825C9A48800BA2AA4 /* ResourceBoxTests */,
 				AC89B08325C9A48800BA2AA4 /* ResourceBoxUITests */,
+				AC89B0C425C9A90900BA2AA4 /* RBShareExtension */,
 				AC89B05B25C9A48500BA2AA4 /* Products */,
 				7D8AF9783E912FB2F78D0578 /* Pods */,
 				E4F2E8ED76676B8BD5D38ACB /* Frameworks */,
@@ -113,6 +150,7 @@
 				AC89B05A25C9A48500BA2AA4 /* ResourceBox.app */,
 				AC89B07525C9A48800BA2AA4 /* ResourceBoxTests.xctest */,
 				AC89B08025C9A48800BA2AA4 /* ResourceBoxUITests.xctest */,
+				AC89B0C325C9A90900BA2AA4 /* RBShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +191,17 @@
 			path = ResourceBoxUITests;
 			sourceTree = "<group>";
 		};
+		AC89B0C425C9A90900BA2AA4 /* RBShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				AC89B0C525C9A90900BA2AA4 /* ShareViewController.h */,
+				AC89B0C625C9A90900BA2AA4 /* ShareViewController.m */,
+				AC89B0C825C9A90900BA2AA4 /* MainInterface.storyboard */,
+				AC89B0CB25C9A90900BA2AA4 /* Info.plist */,
+			);
+			path = RBShareExtension;
+			sourceTree = "<group>";
+		};
 		E4F2E8ED76676B8BD5D38ACB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,10 +222,12 @@
 				AC89B05725C9A48500BA2AA4 /* Frameworks */,
 				AC89B05825C9A48500BA2AA4 /* Resources */,
 				18AB4A66DAD527879A152CDF /* [CP] Copy Pods Resources */,
+				AC89B0CF25C9A90900BA2AA4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AC89B0CD25C9A90900BA2AA4 /* PBXTargetDependency */,
 			);
 			name = ResourceBox;
 			productName = ResourceBox;
@@ -219,6 +270,23 @@
 			productReference = AC89B08025C9A48800BA2AA4 /* ResourceBoxUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		AC89B0C225C9A90900BA2AA4 /* RBShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC89B0D225C9A90900BA2AA4 /* Build configuration list for PBXNativeTarget "RBShareExtension" */;
+			buildPhases = (
+				AC89B0BF25C9A90900BA2AA4 /* Sources */,
+				AC89B0C025C9A90900BA2AA4 /* Frameworks */,
+				AC89B0C125C9A90900BA2AA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RBShareExtension;
+			productName = RBShareExtension;
+			productReference = AC89B0C325C9A90900BA2AA4 /* RBShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -238,6 +306,9 @@
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = AC89B05925C9A48500BA2AA4;
 					};
+					AC89B0C225C9A90900BA2AA4 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 				};
 			};
 			buildConfigurationList = AC89B05525C9A48500BA2AA4 /* Build configuration list for PBXProject "ResourceBox" */;
@@ -256,6 +327,7 @@
 				AC89B05925C9A48500BA2AA4 /* ResourceBox */,
 				AC89B07425C9A48800BA2AA4 /* ResourceBoxTests */,
 				AC89B07F25C9A48800BA2AA4 /* ResourceBoxUITests */,
+				AC89B0C225C9A90900BA2AA4 /* RBShareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -282,6 +354,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC89B0C125C9A90900BA2AA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC89B0CA25C9A90900BA2AA4 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +437,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AC89B0BF25C9A90900BA2AA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC89B0C725C9A90900BA2AA4 /* ShareViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -369,6 +457,11 @@
 			isa = PBXTargetDependency;
 			target = AC89B05925C9A48500BA2AA4 /* ResourceBox */;
 			targetProxy = AC89B08125C9A48800BA2AA4 /* PBXContainerItemProxy */;
+		};
+		AC89B0CD25C9A90900BA2AA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC89B0C225C9A90900BA2AA4 /* RBShareExtension */;
+			targetProxy = AC89B0CC25C9A90900BA2AA4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -387,6 +480,14 @@
 				AC89B06C25C9A48700BA2AA4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AC89B0C825C9A90900BA2AA4 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC89B0C925C9A90900BA2AA4 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -618,6 +719,44 @@
 			};
 			name = Release;
 		};
+		AC89B0D025C9A90900BA2AA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G352K7NR7;
+				INFOPLIST_FILE = RBShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gongyuTest.ResourceBox.RBShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AC89B0D125C9A90900BA2AA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2G352K7NR7;
+				INFOPLIST_FILE = RBShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gongyuTest.ResourceBox.RBShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -653,6 +792,15 @@
 			buildConfigurations = (
 				AC89B09025C9A48800BA2AA4 /* Debug */,
 				AC89B09125C9A48800BA2AA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC89B0D225C9A90900BA2AA4 /* Build configuration list for PBXNativeTarget "RBShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC89B0D025C9A90900BA2AA4 /* Debug */,
+				AC89B0D125C9A90900BA2AA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
