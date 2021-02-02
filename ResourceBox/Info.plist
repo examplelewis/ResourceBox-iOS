@@ -80,5 +80,7 @@
             </array>
         </dict>
     </array>
+    <key>UIFileSharingEnabled</key>
+    <true/>
 </dict>
 </plist>
