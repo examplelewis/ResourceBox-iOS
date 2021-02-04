@@ -18,14 +18,12 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)cancelButtonDidPress:(UIButton *)sender {
-    //取消分享
-    [self.extensionContext cancelRequestWithError:[NSError errorWithDomain:@"CustomShareError" code:NSUserCancelledError userInfo:nil]];
+- (void)postButtonDidPress:(UIButton *)sender {
+    [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
 }
 
-- (void)postButtonDidPress:(UIButton *)sender {
-    //执行分享内容处理
-    [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
+- (void)cancelButtonDidPress:(UIButton *)sender {
+    [self.extensionContext cancelRequestWithError:[NSError errorWithDomain:@"CustomShareError" code:NSUserCancelledError userInfo:nil]];
 }
 
 @end
