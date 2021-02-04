@@ -30,7 +30,7 @@
         NSArray *sqliteFilePaths = [RBFileManager filePathsInFolder:[RBSettingManager defaultManager].mainDatabasesFolderPath extensions:@[@"sqlite"]];
         for (NSString *filePath in sqliteFilePaths) {
             if ([filePath.lastPathComponent hasPrefix:[NSString stringWithFormat:@"%@_", sqliteName]]) {
-                NSError *error;
+//                NSError *error;
 //                BOOL success = [RBFileManager trashItemAtURL:[NSURL fileURLWithPath:filePath] resultingItemURL:nil error:&error];
 //                if (success) {
 //                    [[RBLogManager defaultManager] addDefaultLogWithFormat:@"旧备份文件: %@, 删除成功", filePath];
@@ -79,7 +79,7 @@
         // 再查找原数据库文件是否存在，存在的话就删除
         NSString *sqliteFilePath = [[RBSettingManager defaultManager] pathOfContentInMainDatabasesFolder:sqlitePath];
         if ([RBFileManager fileExistsAtPath:sqliteFilePath]) {
-            NSError *error;
+//            NSError *error;
 //            BOOL success = [RBFileManager trashItemAtURL:[NSURL fileURLWithPath:sqliteFilePath] resultingItemURL:nil error:&error];
 //            if (success) {
 //                [[RBLogManager defaultManager] addDefaultLogWithFormat:@"数据库文件: %@, 删除成功", sqliteFilePath];

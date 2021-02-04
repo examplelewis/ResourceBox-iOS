@@ -60,27 +60,29 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>CFBundleDocumentTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleTypeName</key>
-            <string>com.gongyuTest.All</string>
-            <key>LSHandlerRank</key>
-            <string>Owner</string>
-            <key>LSItemContentTypes</key>
-            <array>
-                <string>public.image</string>
-                <string>public.audio</string>
-                <string>public.video</string>
-                <string>public.data</string>
-                <string>public.plain-text</string>
-                <string>public.text</string>
-                <string>public.item</string>
-                <string>public.content</string>
-            </array>
-        </dict>
-    </array>
-    <key>UIFileSharingEnabled</key>
-    <true/>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>com.gongyuTest.All</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.image</string>
+				<string>public.audio</string>
+				<string>public.video</string>
+				<string>public.data</string>
+				<string>public.plain-text</string>
+				<string>public.text</string>
+				<string>public.item</string>
+				<string>public.content</string>
+			</array>
+		</dict>
+	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
 </dict>
 </plist>
