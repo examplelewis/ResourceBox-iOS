@@ -36,6 +36,8 @@
 		AC6E5F3F25CC351B00D77430 /* NSDictionary+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F2825CC351B00D77430 /* NSDictionary+YYAdd.m */; };
 		AC6E5F4025CC351B00D77430 /* NSObject+YYAddForKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F2B25CC351B00D77430 /* NSObject+YYAddForKVO.m */; };
 		AC6E5F4125CC351B00D77430 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F2F25CC351B00D77430 /* XMLReader.m */; };
+		AC6E5F9125CC4CF800D77430 /* RBShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F8F25CC4CF800D77430 /* RBShareViewController.m */; };
+		AC6E5F9225CC4CF800D77430 /* RBShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC6E5F9025CC4CF800D77430 /* RBShareViewController.xib */; };
 		AC89B05F25C9A48500BA2AA4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89B05E25C9A48500BA2AA4 /* AppDelegate.m */; };
 		AC89B06225C9A48500BA2AA4 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89B06125C9A48500BA2AA4 /* SceneDelegate.m */; };
 		AC89B06525C9A48500BA2AA4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89B06425C9A48500BA2AA4 /* ViewController.m */; };
@@ -160,6 +162,9 @@
 		AC6E5F3225CC351B00D77430 /* RACMetaMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACMetaMacros.h; sourceTree = "<group>"; };
 		AC6E5F8425CC49B600D77430 /* ResourceBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResourceBox.entitlements; sourceTree = "<group>"; };
 		AC6E5F8925CC4A1400D77430 /* RBShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RBShareExtension.entitlements; sourceTree = "<group>"; };
+		AC6E5F8E25CC4CF800D77430 /* RBShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBShareViewController.h; sourceTree = "<group>"; };
+		AC6E5F8F25CC4CF800D77430 /* RBShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBShareViewController.m; sourceTree = "<group>"; };
+		AC6E5F9025CC4CF800D77430 /* RBShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RBShareViewController.xib; sourceTree = "<group>"; };
 		AC89B05A25C9A48500BA2AA4 /* ResourceBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourceBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC89B05D25C9A48500BA2AA4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AC89B05E25C9A48500BA2AA4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -479,11 +484,14 @@
 		ACD0A23325CAF55400DB9DA5 /* RBShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				AC6E5F8E25CC4CF800D77430 /* RBShareViewController.h */,
+				AC6E5F8F25CC4CF800D77430 /* RBShareViewController.m */,
+				AC6E5F9025CC4CF800D77430 /* RBShareViewController.xib */,
+				ACD0A23A25CAF55400DB9DA5 /* Info.plist */,
 				AC6E5F8925CC4A1400D77430 /* RBShareExtension.entitlements */,
 				ACD0A23425CAF55400DB9DA5 /* ShareViewController.h */,
 				ACD0A23525CAF55400DB9DA5 /* ShareViewController.m */,
 				ACD0A23725CAF55400DB9DA5 /* MainInterface.storyboard */,
-				ACD0A23A25CAF55400DB9DA5 /* Info.plist */,
 			);
 			path = RBShareExtension;
 			sourceTree = "<group>";
@@ -647,6 +655,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6E5F9225CC4CF800D77430 /* RBShareViewController.xib in Resources */,
 				ACD0A23925CAF55400DB9DA5 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -755,6 +764,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6E5F9125CC4CF800D77430 /* RBShareViewController.m in Sources */,
 				ACD0A23625CAF55400DB9DA5 /* ShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
