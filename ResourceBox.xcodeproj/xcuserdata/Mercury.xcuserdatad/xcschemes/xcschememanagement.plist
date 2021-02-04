@@ -7,9 +7,19 @@
 		<key>RBShareExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>15</integer>
 		</dict>
 		<key>ResourceBox.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
+		<key>ResourceBoxTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>ResourceBoxUITests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>13</integer>
@@ -18,6 +28,21 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>AC89B05925C9A48500BA2AA4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC89B07425C9A48800BA2AA4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC89B07F25C9A48800BA2AA4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACD0A23125CAF55400DB9DA5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
