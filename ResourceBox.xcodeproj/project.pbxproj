@@ -158,6 +158,8 @@
 		AC6E5F2F25CC351B00D77430 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		AC6E5F3125CC351B00D77430 /* RACEXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACEXTScope.h; sourceTree = "<group>"; };
 		AC6E5F3225CC351B00D77430 /* RACMetaMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACMetaMacros.h; sourceTree = "<group>"; };
+		AC6E5F8425CC49B600D77430 /* ResourceBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ResourceBox.entitlements; sourceTree = "<group>"; };
+		AC6E5F8925CC4A1400D77430 /* RBShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RBShareExtension.entitlements; sourceTree = "<group>"; };
 		AC89B05A25C9A48500BA2AA4 /* ResourceBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResourceBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC89B05D25C9A48500BA2AA4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AC89B05E25C9A48500BA2AA4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				AC89B06E25C9A48700BA2AA4 /* Info.plist */,
 				AC89B06F25C9A48700BA2AA4 /* main.m */,
 				AC6E5EFF25CC340600D77430 /* ResourceBox-Prefix.pch */,
+				AC6E5F8425CC49B600D77430 /* ResourceBox.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 		ACD0A23325CAF55400DB9DA5 /* RBShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				AC6E5F8925CC4A1400D77430 /* RBShareExtension.entitlements */,
 				ACD0A23425CAF55400DB9DA5 /* ShareViewController.h */,
 				ACD0A23525CAF55400DB9DA5 /* ShareViewController.m */,
 				ACD0A23725CAF55400DB9DA5 /* MainInterface.storyboard */,
@@ -921,6 +925,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ResourceBox/ResourceBox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2G352K7NR7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -943,6 +948,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ResourceBox/ResourceBox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2G352K7NR7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1038,6 +1044,7 @@
 		ACD0A23F25CAF55400DB9DA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = RBShareExtension/RBShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2G352K7NR7;
 				INFOPLIST_FILE = RBShareExtension/Info.plist;
@@ -1057,6 +1064,7 @@
 		ACD0A24025CAF55400DB9DA5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = RBShareExtension/RBShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2G352K7NR7;
 				INFOPLIST_FILE = RBShareExtension/Info.plist;
