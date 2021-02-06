@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "RBWeiboShareManager.h"
+#import "RBShareImageManager.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -64,7 +64,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
-        [RBWeiboShareManager cellDidPressAtIndex:indexPath.row];
+        [RBShareImageManager cellDidPressAtIndex:indexPath.row];
     }
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

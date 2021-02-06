@@ -1,5 +1,5 @@
 //
-//  RBWeiboShareManager.h
+//  RBShareImageManager.h
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/06.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RBWeiboShareManager : NSObject
+@interface RBShareImageManager : NSObject
 
 + (void)cellDidPressAtIndex:(NSInteger)index;
 

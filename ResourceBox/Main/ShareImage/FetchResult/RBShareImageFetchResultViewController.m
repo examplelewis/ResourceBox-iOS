@@ -1,21 +1,21 @@
 //
-//  RBWeiboShareFetchResultViewController.m
+//  RBShareImageFetchResultViewController.m
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/06.
 //
 
-#import "RBWeiboShareFetchResultViewController.h"
-#import "RBWeiboShareFetchResultTableViewCell.h"
+#import "RBShareImageFetchResultViewController.h"
+#import "RBShareImageFetchResultTableViewCell.h"
 
-@interface RBWeiboShareFetchResultViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface RBShareImageFetchResultViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *listData;
 
 @end
 
-@implementation RBWeiboShareFetchResultViewController
+@implementation RBShareImageFetchResultViewController
 
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
@@ -31,21 +31,21 @@
     self.listData = [NSMutableArray array];
     
     // UI
-    [self.tableView registerNib:[UINib nibWithNibName:@"RBWeiboShareFetchResultTableViewCell" bundle:nil] forCellReuseIdentifier:@"RBWeiboShareFetchResult"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RBShareImageFetchResultTableViewCell" bundle:nil] forCellReuseIdentifier:@"RBShareImageFetchResult"];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 176;
     self.tableView.tableFooterView = [UIView new];
 }
 - (void)refresh {
     NSString *rootFolderPath = @"";
-    if (self.behavior & RBWeiboShareFetchResultBehaviorSourceWeibo) {
-        if (self.behavior & RBWeiboShareFetchResultBehaviorContainerApp) {
+    if (self.behavior & RBShareImageFetchResultBehaviorSourceWeibo) {
+        if (self.behavior & RBShareImageFetchResultBehaviorContainerApp) {
             self.title = @"查询已抓取的图片数量(App)";
-            rootFolderPath = [RBFileManager shareExtensionWeiboImagesAppContainerFolderPath];
+            rootFolderPath = [RBFileManager shareExtensionShareImagesAppContainerFolderPath];
         }
-        if (self.behavior & RBWeiboShareFetchResultBehaviorContainerGroup) {
+        if (self.behavior & RBShareImageFetchResultBehaviorContainerGroup) {
             self.title = @"查询已抓取的图片数量(Group)";
-            rootFolderPath = [RBFileManager shareExtensionWeiboImagesGroupContainerFolderPath];
+            rootFolderPath = [RBFileManager shareExtensionShareImagesGroupContainerFolderPath];
         }
     }
     
@@ -80,7 +80,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *data = self.listData[indexPath.row];
-    RBWeiboShareFetchResultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RBWeiboShareFetchResult"];
+    RBShareImageFetchResultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RBShareImageFetchResult"];
     cell.nameLabel.text = [NSString stringWithFormat:@"\t%@", data[@"name"]];
     cell.statusLabel.text = [NSString stringWithFormat:@"\t%@", data[@"text"]];
     cell.timeLabel.text = [NSString stringWithFormat:@"\t%@", [[NSDate dateWithString:data[@"date"] format:RBTimeFormatyMdHmsSCompact] stringWithFormat:RBTimeFormatyMdHmsS]];

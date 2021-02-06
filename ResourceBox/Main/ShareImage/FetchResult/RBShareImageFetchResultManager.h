@@ -1,5 +1,5 @@
 //
-//  RBWeiboShareFetchResultManager.h
+//  RBShareImageFetchResultManager.h
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/06.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RBWeiboShareFetchResultManager : NSObject
+@interface RBShareImageFetchResultManager : NSObject
 
 + (void)moveImageFilesToAppContainer;
 + (void)cleanImageFolder;

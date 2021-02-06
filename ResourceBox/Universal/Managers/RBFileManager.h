@@ -32,8 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)removeFileURL:(NSURL *)fileURL;
 
 #pragma mark - RBShareExtension
-+ (NSString *)shareExtensionWeiboImagesAppContainerFolderPath;
-+ (NSString *)shareExtensionWeiboImagesGroupContainerFolderPath;
++ (NSString *)shareExtensionShareImagesAppContainerFolderPath;
++ (NSString *)shareExtensionShareImagesGroupContainerFolderPath;
 + (NSString *)shareExtensionFilePathForShareImageWithName:(NSString *)fileName;
 
 #pragma mark - File Path

@@ -1,21 +1,21 @@
 //
-//  RBWeiboShareFetchResultManager.m
+//  RBShareImageFetchResultManager.m
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/06.
 //
 
-#import "RBWeiboShareFetchResultManager.h"
+#import "RBShareImageFetchResultManager.h"
 
-@implementation RBWeiboShareFetchResultManager
+@implementation RBShareImageFetchResultManager
 
 + (void)moveImageFilesToAppContainer {
-    [RBFileManager createFolderAtPath:[RBFileManager shareExtensionWeiboImagesAppContainerFolderPath]];
+    [RBFileManager createFolderAtPath:[RBFileManager shareExtensionShareImagesAppContainerFolderPath]];
     
-    NSArray *contentPaths = [RBFileManager contentPathsInFolder:[RBFileManager shareExtensionWeiboImagesGroupContainerFolderPath]];
+    NSArray *contentPaths = [RBFileManager contentPathsInFolder:[RBFileManager shareExtensionShareImagesGroupContainerFolderPath]];
     for (NSInteger i = 0; i < contentPaths.count; i++) {
         NSString *contentPath = contentPaths[i];
-        NSString *destPath = [[RBFileManager shareExtensionWeiboImagesAppContainerFolderPath] stringByAppendingPathComponent:contentPath.lastPathComponent];
+        NSString *destPath = [[RBFileManager shareExtensionShareImagesAppContainerFolderPath] stringByAppendingPathComponent:contentPath.lastPathComponent];
         [RBFileManager moveItemFromPath:contentPath toPath:destPath];
         
         [[RBLogManager defaultManager] addDefaultLogWithFormat:@"移动前: %@", contentPath];
@@ -29,7 +29,7 @@
     
     UIAlertAction *cancelAA = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
     UIAlertAction *confirmAA = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [RBWeiboShareFetchResultManager _cleanImageFolder];
+        [RBShareImageFetchResultManager _cleanImageFolder];
     }];
     
     [ac addAction:cancelAA];
@@ -38,7 +38,7 @@
     [[RBSettingManager defaultManager].navigationController.visibleViewController presentViewController:ac animated:YES completion:^{}];
 }
 + (void)_cleanImageFolder {
-    [RBFileManager removeFilePath:[RBFileManager shareExtensionWeiboImagesAppContainerFolderPath]];
+    [RBFileManager removeFilePath:[RBFileManager shareExtensionShareImagesAppContainerFolderPath]];
     
     [[RBSettingManager defaultManager].viewController.view makeToast:@"已全部完成" duration:1.5 position:CSToastPositionCenter];
 }

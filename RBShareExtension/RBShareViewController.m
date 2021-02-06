@@ -66,7 +66,7 @@
     self.loadCount = 0;
     self.startDate = [NSDate date];
     
-    [RBFileManager createFolderAtPath:[RBFileManager shareExtensionWeiboImagesGroupContainerFolderPath]];
+    [RBFileManager createFolderAtPath:[RBFileManager shareExtensionShareImagesGroupContainerFolderPath]];
 }
 
 #pragma mark - Read
@@ -146,7 +146,7 @@
 #pragma mark - Process
 - (void)processInfo {
     NSString *folderName = [self folderNameFromWeiboText];
-    NSString *folderPath = [[RBFileManager shareExtensionWeiboImagesGroupContainerFolderPath] stringByAppendingPathComponent:folderName];
+    NSString *folderPath = [[RBFileManager shareExtensionShareImagesGroupContainerFolderPath] stringByAppendingPathComponent:folderName];
     [RBFileManager createFolderAtPath:folderPath];
     
     for (NSInteger i = 0; i < self.imageFilePaths.count; i++) {

@@ -36,12 +36,12 @@
 		AC3820C425CEA236004ECB23 /* RBSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EB825CC32FF00D77430 /* RBSettingManager.m */; };
 		AC3820C525CEA236004ECB23 /* RBSQLiteSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EBB25CC32FF00D77430 /* RBSQLiteSettingManager.m */; };
 		AC3820DE25CEBC4E004ECB23 /* RBShareTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3820DD25CEBC4E004ECB23 /* RBShareTextModel.m */; };
-		AC3820EE25CED039004ECB23 /* RBWeiboShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3820ED25CED039004ECB23 /* RBWeiboShareManager.m */; };
-		AC38211025CED72D004ECB23 /* RBWeiboShareFetchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38210E25CED72D004ECB23 /* RBWeiboShareFetchResultViewController.m */; };
-		AC38211125CED72D004ECB23 /* RBWeiboShareFetchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC38210F25CED72D004ECB23 /* RBWeiboShareFetchResultViewController.xib */; };
-		AC38211D25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38211B25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.m */; };
-		AC38211E25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC38211C25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.xib */; };
-		AC38212525CEE44A004ECB23 /* RBWeiboShareFetchResultManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38212425CEE44A004ECB23 /* RBWeiboShareFetchResultManager.m */; };
+		AC38216925CEEDE8004ECB23 /* RBShareImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38215E25CEEDE8004ECB23 /* RBShareImageManager.m */; };
+		AC38216A25CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38216125CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m */; };
+		AC38216B25CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC38216225CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib */; };
+		AC38216C25CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC38216625CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib */; };
+		AC38216D25CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38216725CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m */; };
+		AC38216E25CEEDE8004ECB23 /* RBShareImageFetchResultManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38216825CEEDE8004ECB23 /* RBShareImageFetchResultManager.m */; };
 		AC6E5ED025CC32FF00D77430 /* RBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9525CC32FF00D77430 /* RBFileManager.m */; };
 		AC6E5ED125CC32FF00D77430 /* RBUtilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9725CC32FF00D77430 /* RBUtilityManager.m */; };
 		AC6E5ED325CC32FF00D77430 /* RBExceptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9E25CC32FF00D77430 /* RBExceptionManager.m */; };
@@ -133,16 +133,16 @@
 		AC38209225CEA163004ECB23 /* RBShareExtension-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RBShareExtension-Prefix.pch"; sourceTree = "<group>"; };
 		AC3820DC25CEBC4E004ECB23 /* RBShareTextModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBShareTextModel.h; sourceTree = "<group>"; };
 		AC3820DD25CEBC4E004ECB23 /* RBShareTextModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBShareTextModel.m; sourceTree = "<group>"; };
-		AC3820EC25CED039004ECB23 /* RBWeiboShareManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBWeiboShareManager.h; sourceTree = "<group>"; };
-		AC3820ED25CED039004ECB23 /* RBWeiboShareManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBWeiboShareManager.m; sourceTree = "<group>"; };
-		AC38210D25CED72D004ECB23 /* RBWeiboShareFetchResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBWeiboShareFetchResultViewController.h; sourceTree = "<group>"; };
-		AC38210E25CED72D004ECB23 /* RBWeiboShareFetchResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBWeiboShareFetchResultViewController.m; sourceTree = "<group>"; };
-		AC38210F25CED72D004ECB23 /* RBWeiboShareFetchResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RBWeiboShareFetchResultViewController.xib; sourceTree = "<group>"; };
-		AC38211A25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBWeiboShareFetchResultTableViewCell.h; sourceTree = "<group>"; };
-		AC38211B25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBWeiboShareFetchResultTableViewCell.m; sourceTree = "<group>"; };
-		AC38211C25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RBWeiboShareFetchResultTableViewCell.xib; sourceTree = "<group>"; };
-		AC38212325CEE44A004ECB23 /* RBWeiboShareFetchResultManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBWeiboShareFetchResultManager.h; sourceTree = "<group>"; };
-		AC38212425CEE44A004ECB23 /* RBWeiboShareFetchResultManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBWeiboShareFetchResultManager.m; sourceTree = "<group>"; };
+		AC38215E25CEEDE8004ECB23 /* RBShareImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBShareImageManager.m; sourceTree = "<group>"; };
+		AC38215F25CEEDE8004ECB23 /* RBShareImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBShareImageManager.h; sourceTree = "<group>"; };
+		AC38216125CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBShareImageFetchResultTableViewCell.m; sourceTree = "<group>"; };
+		AC38216225CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RBShareImageFetchResultTableViewCell.xib; sourceTree = "<group>"; };
+		AC38216325CEEDE8004ECB23 /* RBShareImageFetchResultManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBShareImageFetchResultManager.h; sourceTree = "<group>"; };
+		AC38216425CEEDE8004ECB23 /* RBShareImageFetchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBShareImageFetchResultViewController.h; sourceTree = "<group>"; };
+		AC38216525CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBShareImageFetchResultTableViewCell.h; sourceTree = "<group>"; };
+		AC38216625CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RBShareImageFetchResultViewController.xib; sourceTree = "<group>"; };
+		AC38216725CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBShareImageFetchResultViewController.m; sourceTree = "<group>"; };
+		AC38216825CEEDE8004ECB23 /* RBShareImageFetchResultManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBShareImageFetchResultManager.m; sourceTree = "<group>"; };
 		AC6E5E9525CC32FF00D77430 /* RBFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBFileManager.m; sourceTree = "<group>"; };
 		AC6E5E9625CC32FF00D77430 /* RBExceptionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBExceptionManager.h; sourceTree = "<group>"; };
 		AC6E5E9725CC32FF00D77430 /* RBUtilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBUtilityManager.m; sourceTree = "<group>"; };
@@ -287,27 +287,27 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		AC3820EB25CECE9A004ECB23 /* WeiboShare */ = {
+		AC38215D25CEEDE8004ECB23 /* ShareImage */ = {
 			isa = PBXGroup;
 			children = (
-				AC3820EC25CED039004ECB23 /* RBWeiboShareManager.h */,
-				AC3820ED25CED039004ECB23 /* RBWeiboShareManager.m */,
-				AC3820F325CED0C3004ECB23 /* FetchResult */,
+				AC38215E25CEEDE8004ECB23 /* RBShareImageManager.m */,
+				AC38215F25CEEDE8004ECB23 /* RBShareImageManager.h */,
+				AC38216025CEEDE8004ECB23 /* FetchResult */,
 			);
-			path = WeiboShare;
+			path = ShareImage;
 			sourceTree = "<group>";
 		};
-		AC3820F325CED0C3004ECB23 /* FetchResult */ = {
+		AC38216025CEEDE8004ECB23 /* FetchResult */ = {
 			isa = PBXGroup;
 			children = (
-				AC38212325CEE44A004ECB23 /* RBWeiboShareFetchResultManager.h */,
-				AC38212425CEE44A004ECB23 /* RBWeiboShareFetchResultManager.m */,
-				AC38210D25CED72D004ECB23 /* RBWeiboShareFetchResultViewController.h */,
-				AC38210E25CED72D004ECB23 /* RBWeiboShareFetchResultViewController.m */,
-				AC38210F25CED72D004ECB23 /* RBWeiboShareFetchResultViewController.xib */,
-				AC38211A25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.h */,
-				AC38211B25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.m */,
-				AC38211C25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.xib */,
+				AC38216125CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m */,
+				AC38216225CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib */,
+				AC38216325CEEDE8004ECB23 /* RBShareImageFetchResultManager.h */,
+				AC38216425CEEDE8004ECB23 /* RBShareImageFetchResultViewController.h */,
+				AC38216525CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.h */,
+				AC38216625CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib */,
+				AC38216725CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m */,
+				AC38216825CEEDE8004ECB23 /* RBShareImageFetchResultManager.m */,
 			);
 			path = FetchResult;
 			sourceTree = "<group>";
@@ -495,7 +495,7 @@
 		AC6E5F7F25CC3C9800D77430 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				AC3820EB25CECE9A004ECB23 /* WeiboShare */,
+				AC38215D25CEEDE8004ECB23 /* ShareImage */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -718,10 +718,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC89B06D25C9A48700BA2AA4 /* LaunchScreen.storyboard in Resources */,
+				AC38216C25CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib in Resources */,
 				AC89B06A25C9A48700BA2AA4 /* Assets.xcassets in Resources */,
-				AC38211125CED72D004ECB23 /* RBWeiboShareFetchResultViewController.xib in Resources */,
-				AC38211E25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.xib in Resources */,
 				AC89B06825C9A48500BA2AA4 /* Main.storyboard in Resources */,
+				AC38216B25CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,7 +844,6 @@
 				AC6E5F3D25CC351B00D77430 /* NSString+YYAdd.m in Sources */,
 				AC6E5F3825CC351B00D77430 /* NSThread+YYAdd.m in Sources */,
 				AC6E5EE325CC32FF00D77430 /* NSError+RBAdd.m in Sources */,
-				AC38212525CEE44A004ECB23 /* RBWeiboShareFetchResultManager.m in Sources */,
 				AC6E5F3B25CC351B00D77430 /* NSObject+YYAddForARC.m in Sources */,
 				AC6E5F3E25CC351B00D77430 /* NSNotificationCenter+YYAdd.m in Sources */,
 				AC89B06525C9A48500BA2AA4 /* ViewController.m in Sources */,
@@ -853,12 +852,14 @@
 				AC6E5EE425CC32FF00D77430 /* NSString+RBAdd.m in Sources */,
 				AC6E5F3725CC351B00D77430 /* NSData+YYAdd.m in Sources */,
 				AC89B05F25C9A48500BA2AA4 /* AppDelegate.m in Sources */,
+				AC38216925CEEDE8004ECB23 /* RBShareImageManager.m in Sources */,
 				AC6E5EE025CC32FF00D77430 /* RBSQLiteSettingManager.m in Sources */,
-				AC38211D25CED956004ECB23 /* RBWeiboShareFetchResultTableViewCell.m in Sources */,
-				AC3820EE25CED039004ECB23 /* RBWeiboShareManager.m in Sources */,
 				AC89B07025C9A48700BA2AA4 /* main.m in Sources */,
+				AC38216D25CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m in Sources */,
 				AC6E5EED25CC334600D77430 /* UIColor+RBAdd.m in Sources */,
 				AC6E5EE525CC32FF00D77430 /* NSDictionary+RBAdd.m in Sources */,
+				AC38216E25CEEDE8004ECB23 /* RBShareImageFetchResultManager.m in Sources */,
+				AC38216A25CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m in Sources */,
 				AC6E5ED325CC32FF00D77430 /* RBExceptionManager.m in Sources */,
 				AC6E5F3525CC351B00D77430 /* NSBundle+YYAdd.m in Sources */,
 				AC6E5F4025CC351B00D77430 /* NSObject+YYAddForKVO.m in Sources */,
@@ -867,7 +868,6 @@
 				AC6E5F4125CC351B00D77430 /* XMLReader.m in Sources */,
 				AC6E5F3C25CC351B00D77430 /* NSDate+YYAdd.m in Sources */,
 				AC6E5F3625CC351B00D77430 /* NSObject+YYAdd.m in Sources */,
-				AC38211025CED72D004ECB23 /* RBWeiboShareFetchResultViewController.m in Sources */,
 				AC6E5F3325CC351B00D77430 /* NSArray+YYAdd.m in Sources */,
 				AC6E5F3F25CC351B00D77430 /* NSDictionary+YYAdd.m in Sources */,
 				AC6E5ED025CC32FF00D77430 /* RBFileManager.m in Sources */,

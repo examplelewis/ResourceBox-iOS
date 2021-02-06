@@ -8,6 +8,8 @@
 
 #import "RBFileManager.h"
 
+static NSString * kShareExtensionShareImagesFolderName = @"ShareImages";
+
 @implementation RBFileManager
 
 #pragma mark - Create
@@ -85,14 +87,14 @@
 + (NSURL *)containerURL {
     return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.gongyuTest.ResourceBox"];
 }
-+ (NSString *)shareExtensionWeiboImagesAppContainerFolderPath {
-    return [[RBSettingManager defaultManager].documentPath stringByAppendingPathComponent:@"WeiboImages"];
++ (NSString *)shareExtensionShareImagesAppContainerFolderPath {
+    return [[RBSettingManager defaultManager].documentPath stringByAppendingPathComponent:kShareExtensionShareImagesFolderName];
 }
-+ (NSString *)shareExtensionWeiboImagesGroupContainerFolderPath {
-    return [[RBFileManager containerURL].path stringByAppendingPathComponent:@"WeiboImages"];
++ (NSString *)shareExtensionShareImagesGroupContainerFolderPath {
+    return [[RBFileManager containerURL].path stringByAppendingPathComponent:kShareExtensionShareImagesFolderName];
 }
 + (NSString *)shareExtensionFilePathForShareImageWithName:(NSString *)fileName {
-    return [[[RBFileManager containerURL].path stringByAppendingPathComponent:@"WeiboImages"] stringByAppendingPathComponent:fileName];
+    return [[[RBFileManager containerURL].path stringByAppendingPathComponent:kShareExtensionShareImagesFolderName] stringByAppendingPathComponent:fileName];
 }
 
 #pragma mark - File Path

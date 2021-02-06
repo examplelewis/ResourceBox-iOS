@@ -1,5 +1,5 @@
 //
-//  RBWeiboShareFetchResultTableViewCell.h
+//  RBShareImageFetchResultTableViewCell.h
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/06.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RBWeiboShareFetchResultTableViewCell : UITableViewCell
+@interface RBShareImageFetchResultTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;

@@ -1,13 +1,13 @@
 //
-//  RBWeiboShareFetchResultTableViewCell.m
+//  RBShareImageFetchResultTableViewCell.m
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/06.
 //
 
-#import "RBWeiboShareFetchResultTableViewCell.h"
+#import "RBShareImageFetchResultTableViewCell.h"
 
-@implementation RBWeiboShareFetchResultTableViewCell
+@implementation RBShareImageFetchResultTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
