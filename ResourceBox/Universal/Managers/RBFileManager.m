@@ -59,6 +59,17 @@
     return [RBFileManager copyItemFromPath:[RBFileManager filePathFromFileURL:fromURL] toPath:[RBFileManager filePathFromFileURL:toURL] error:error];
 }
 
+#pragma mark - RBShareExtension
++ (NSURL *)containerURL {
+    return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.gongyuTest.ResourceBox"];
+}
++ (NSString *)shareExtensionWeiboImagesFolderPath {
+    return [[RBFileManager containerURL].path stringByAppendingPathComponent:@"WeiboImages"];
+}
++ (NSString *)shareExtensionFilePathForShareImageWithName:(NSString *)fileName {
+    return [[[RBFileManager containerURL].path stringByAppendingPathComponent:@"WeiboImages"] stringByAppendingPathComponent:fileName];
+}
+
 #pragma mark - File Path
 + (NSArray<NSString *> *)filePathsInFolder:(NSString *)folderPath {
     NSMutableArray<NSString *> *results = [NSMutableArray array];

@@ -23,6 +23,7 @@ static NSString * const RBTimeFormatyMdHmsS = @"yyyy-MM-dd HH:mm:ss.SSS";
 static NSString * const RBTimeFormatEMdHmsZy = @"EEE MMM dd HH:mm:ss Z yyyy";
 
 static NSString * const RBTimeFormatyMdHmsCompact = @"yyyyMMddHHmmss";
+static NSString * const RBTimeFormatyMdHmsSCompact = @"yyyyMMddHHmmssSSS";
 
 // Notification Key
 static NSString * const RBDidGetWeiboTokenNotification = @"com.gongyu.MyUniqueBox.RBDidGetWeiboTokenNotification";

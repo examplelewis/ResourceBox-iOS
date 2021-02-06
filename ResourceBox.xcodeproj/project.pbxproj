@@ -8,6 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		1595B8BB8DCD2762129F94A3 /* libPods-ResourceBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F57E1A2A00F57401B6EBB773 /* libPods-ResourceBox.a */; };
+		AC38209325CEA191004ECB23 /* NSArray+RBAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EC725CC32FF00D77430 /* NSArray+RBAdd.m */; };
+		AC38209425CEA191004ECB23 /* NSDictionary+RBAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5ECC25CC32FF00D77430 /* NSDictionary+RBAdd.m */; };
+		AC38209525CEA191004ECB23 /* NSError+RBAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EC925CC32FF00D77430 /* NSError+RBAdd.m */; };
+		AC38209625CEA191004ECB23 /* NSObject+RBAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EC425CC32FF00D77430 /* NSObject+RBAdd.m */; };
+		AC38209725CEA191004ECB23 /* NSString+RBAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5ECB25CC32FF00D77430 /* NSString+RBAdd.m */; };
+		AC38209825CEA191004ECB23 /* UIColor+RBAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EEC25CC334600D77430 /* UIColor+RBAdd.m */; };
+		AC38209D25CEA19B004ECB23 /* NSArray+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F1025CC351B00D77430 /* NSArray+YYAdd.m */; };
+		AC38209E25CEA19B004ECB23 /* NSBundle+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F1625CC351B00D77430 /* NSBundle+YYAdd.m */; };
+		AC38209F25CEA19B004ECB23 /* NSData+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F1A25CC351B00D77430 /* NSData+YYAdd.m */; };
+		AC3820A025CEA19B004ECB23 /* NSDate+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F2225CC351B00D77430 /* NSDate+YYAdd.m */; };
+		AC3820A125CEA19B004ECB23 /* NSDictionary+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F2825CC351B00D77430 /* NSDictionary+YYAdd.m */; };
+		AC3820A225CEA19B004ECB23 /* NSKeyedUnarchiver+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F1D25CC351B00D77430 /* NSKeyedUnarchiver+YYAdd.m */; };
+		AC3820A325CEA19B004ECB23 /* NSNotificationCenter+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F2625CC351B00D77430 /* NSNotificationCenter+YYAdd.m */; };
+		AC3820A425CEA19B004ECB23 /* NSNumber+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F1125CC351B00D77430 /* NSNumber+YYAdd.m */; };
+		AC3820A525CEA19B004ECB23 /* NSObject+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F1725CC351B00D77430 /* NSObject+YYAdd.m */; };
+		AC3820A625CEA19B004ECB23 /* NSObject+YYAddForARC.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F2125CC351B00D77430 /* NSObject+YYAddForARC.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AC3820A725CEA19B004ECB23 /* NSObject+YYAddForKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F2B25CC351B00D77430 /* NSObject+YYAddForKVO.m */; };
+		AC3820A825CEA19B004ECB23 /* NSString+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F2425CC351B00D77430 /* NSString+YYAdd.m */; };
+		AC3820A925CEA19B004ECB23 /* NSThread+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F1B25CC351B00D77430 /* NSThread+YYAdd.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AC3820AA25CEA19B004ECB23 /* NSTimer+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5F1E25CC351B00D77430 /* NSTimer+YYAdd.m */; };
+		AC3820BF25CEA236004ECB23 /* RBExceptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9E25CC32FF00D77430 /* RBExceptionManager.m */; };
+		AC3820C025CEA236004ECB23 /* RBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9525CC32FF00D77430 /* RBFileManager.m */; };
+		AC3820C125CEA236004ECB23 /* RBLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EB925CC32FF00D77430 /* RBLogManager.m */; };
+		AC3820C225CEA236004ECB23 /* RBUtilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9725CC32FF00D77430 /* RBUtilityManager.m */; };
+		AC3820C325CEA236004ECB23 /* RBHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EAD25CC32FF00D77430 /* RBHTTPManager.m */; };
+		AC3820C425CEA236004ECB23 /* RBSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EB825CC32FF00D77430 /* RBSettingManager.m */; };
+		AC3820C525CEA236004ECB23 /* RBSQLiteSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EBB25CC32FF00D77430 /* RBSQLiteSettingManager.m */; };
+		AC3820DE25CEBC4E004ECB23 /* RBShareTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3820DD25CEBC4E004ECB23 /* RBShareTextModel.m */; };
 		AC6E5ED025CC32FF00D77430 /* RBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9525CC32FF00D77430 /* RBFileManager.m */; };
 		AC6E5ED125CC32FF00D77430 /* RBUtilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9725CC32FF00D77430 /* RBUtilityManager.m */; };
 		AC6E5ED325CC32FF00D77430 /* RBExceptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9E25CC32FF00D77430 /* RBExceptionManager.m */; };
@@ -50,6 +78,7 @@
 		ACD0A23625CAF55400DB9DA5 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD0A23525CAF55400DB9DA5 /* ShareViewController.m */; };
 		ACD0A23925CAF55400DB9DA5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD0A23725CAF55400DB9DA5 /* MainInterface.storyboard */; };
 		ACD0A23D25CAF55400DB9DA5 /* RBShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ACD0A23225CAF55400DB9DA5 /* RBShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E7136A26835BDFADF2D96D83 /* libPods-RBShareExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D0BC616DD363473A74398A /* libPods-RBShareExtension.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +121,12 @@
 
 /* Begin PBXFileReference section */
 		443ECD9118C6053C2785C383 /* Pods-ResourceBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceBox.release.xcconfig"; path = "Target Support Files/Pods-ResourceBox/Pods-ResourceBox.release.xcconfig"; sourceTree = "<group>"; };
+		58913FA3D7E31C8C4431D386 /* Pods-RBShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RBShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-RBShareExtension/Pods-RBShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		58E18A5CB512625D10CA9A44 /* Pods-ResourceBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceBox.debug.xcconfig"; path = "Target Support Files/Pods-ResourceBox/Pods-ResourceBox.debug.xcconfig"; sourceTree = "<group>"; };
+		69D0BC616DD363473A74398A /* libPods-RBShareExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RBShareExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC38209225CEA163004ECB23 /* RBShareExtension-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RBShareExtension-Prefix.pch"; sourceTree = "<group>"; };
+		AC3820DC25CEBC4E004ECB23 /* RBShareTextModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBShareTextModel.h; sourceTree = "<group>"; };
+		AC3820DD25CEBC4E004ECB23 /* RBShareTextModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBShareTextModel.m; sourceTree = "<group>"; };
 		AC6E5E9525CC32FF00D77430 /* RBFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBFileManager.m; sourceTree = "<group>"; };
 		AC6E5E9625CC32FF00D77430 /* RBExceptionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBExceptionManager.h; sourceTree = "<group>"; };
 		AC6E5E9725CC32FF00D77430 /* RBUtilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBUtilityManager.m; sourceTree = "<group>"; };
@@ -188,6 +222,7 @@
 		ACD0A23525CAF55400DB9DA5 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		ACD0A23825CAF55400DB9DA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		ACD0A23A25CAF55400DB9DA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8C7A9CDDB30630088DE335A /* Pods-RBShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RBShareExtension.release.xcconfig"; path = "Target Support Files/Pods-RBShareExtension/Pods-RBShareExtension.release.xcconfig"; sourceTree = "<group>"; };
 		F57E1A2A00F57401B6EBB773 /* libPods-ResourceBox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ResourceBox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -218,6 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7136A26835BDFADF2D96D83 /* libPods-RBShareExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +265,8 @@
 			children = (
 				58E18A5CB512625D10CA9A44 /* Pods-ResourceBox.debug.xcconfig */,
 				443ECD9118C6053C2785C383 /* Pods-ResourceBox.release.xcconfig */,
+				58913FA3D7E31C8C4431D386 /* Pods-RBShareExtension.debug.xcconfig */,
+				E8C7A9CDDB30630088DE335A /* Pods-RBShareExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -487,11 +525,14 @@
 				AC6E5F8E25CC4CF800D77430 /* RBShareViewController.h */,
 				AC6E5F8F25CC4CF800D77430 /* RBShareViewController.m */,
 				AC6E5F9025CC4CF800D77430 /* RBShareViewController.xib */,
+				AC3820DC25CEBC4E004ECB23 /* RBShareTextModel.h */,
+				AC3820DD25CEBC4E004ECB23 /* RBShareTextModel.m */,
 				ACD0A23A25CAF55400DB9DA5 /* Info.plist */,
 				AC6E5F8925CC4A1400D77430 /* RBShareExtension.entitlements */,
 				ACD0A23425CAF55400DB9DA5 /* ShareViewController.h */,
 				ACD0A23525CAF55400DB9DA5 /* ShareViewController.m */,
 				ACD0A23725CAF55400DB9DA5 /* MainInterface.storyboard */,
+				AC38209225CEA163004ECB23 /* RBShareExtension-Prefix.pch */,
 			);
 			path = RBShareExtension;
 			sourceTree = "<group>";
@@ -500,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				F57E1A2A00F57401B6EBB773 /* libPods-ResourceBox.a */,
+				69D0BC616DD363473A74398A /* libPods-RBShareExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -568,9 +610,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACD0A23E25CAF55400DB9DA5 /* Build configuration list for PBXNativeTarget "RBShareExtension" */;
 			buildPhases = (
+				F6541291E1A81AAA3F1D9D30 /* [CP] Check Pods Manifest.lock */,
 				ACD0A22E25CAF55400DB9DA5 /* Sources */,
 				ACD0A22F25CAF55400DB9DA5 /* Frameworks */,
 				ACD0A23025CAF55400DB9DA5 /* Resources */,
+				2C0DD8C9D8C814AD70E17B20 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -680,6 +724,45 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ResourceBox/Pods-ResourceBox-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2C0DD8C9D8C814AD70E17B20 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RBShareExtension/Pods-RBShareExtension-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RBShareExtension/Pods-RBShareExtension-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RBShareExtension/Pods-RBShareExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6541291E1A81AAA3F1D9D30 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RBShareExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FF9C818E604E43DD81DA9289 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -764,6 +847,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC3820BF25CEA236004ECB23 /* RBExceptionManager.m in Sources */,
+				AC3820C025CEA236004ECB23 /* RBFileManager.m in Sources */,
+				AC3820C125CEA236004ECB23 /* RBLogManager.m in Sources */,
+				AC3820C225CEA236004ECB23 /* RBUtilityManager.m in Sources */,
+				AC3820C325CEA236004ECB23 /* RBHTTPManager.m in Sources */,
+				AC3820DE25CEBC4E004ECB23 /* RBShareTextModel.m in Sources */,
+				AC3820C425CEA236004ECB23 /* RBSettingManager.m in Sources */,
+				AC3820C525CEA236004ECB23 /* RBSQLiteSettingManager.m in Sources */,
+				AC38209D25CEA19B004ECB23 /* NSArray+YYAdd.m in Sources */,
+				AC38209E25CEA19B004ECB23 /* NSBundle+YYAdd.m in Sources */,
+				AC38209F25CEA19B004ECB23 /* NSData+YYAdd.m in Sources */,
+				AC3820A025CEA19B004ECB23 /* NSDate+YYAdd.m in Sources */,
+				AC3820A125CEA19B004ECB23 /* NSDictionary+YYAdd.m in Sources */,
+				AC3820A225CEA19B004ECB23 /* NSKeyedUnarchiver+YYAdd.m in Sources */,
+				AC3820A325CEA19B004ECB23 /* NSNotificationCenter+YYAdd.m in Sources */,
+				AC3820A425CEA19B004ECB23 /* NSNumber+YYAdd.m in Sources */,
+				AC3820A525CEA19B004ECB23 /* NSObject+YYAdd.m in Sources */,
+				AC3820A625CEA19B004ECB23 /* NSObject+YYAddForARC.m in Sources */,
+				AC3820A725CEA19B004ECB23 /* NSObject+YYAddForKVO.m in Sources */,
+				AC3820A825CEA19B004ECB23 /* NSString+YYAdd.m in Sources */,
+				AC3820A925CEA19B004ECB23 /* NSThread+YYAdd.m in Sources */,
+				AC3820AA25CEA19B004ECB23 /* NSTimer+YYAdd.m in Sources */,
+				AC38209325CEA191004ECB23 /* NSArray+RBAdd.m in Sources */,
+				AC38209425CEA191004ECB23 /* NSDictionary+RBAdd.m in Sources */,
+				AC38209525CEA191004ECB23 /* NSError+RBAdd.m in Sources */,
+				AC38209625CEA191004ECB23 /* NSObject+RBAdd.m in Sources */,
+				AC38209725CEA191004ECB23 /* NSString+RBAdd.m in Sources */,
+				AC38209825CEA191004ECB23 /* UIColor+RBAdd.m in Sources */,
 				AC6E5F9125CC4CF800D77430 /* RBShareViewController.m in Sources */,
 				ACD0A23625CAF55400DB9DA5 /* ShareViewController.m in Sources */,
 			);
@@ -1053,10 +1164,13 @@
 		};
 		ACD0A23F25CAF55400DB9DA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58913FA3D7E31C8C4431D386 /* Pods-RBShareExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = RBShareExtension/RBShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2G352K7NR7;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/RBShareExtension/RBShareExtension-Prefix.pch";
 				INFOPLIST_FILE = RBShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1073,10 +1187,13 @@
 		};
 		ACD0A24025CAF55400DB9DA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8C7A9CDDB30630088DE335A /* Pods-RBShareExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = RBShareExtension/RBShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2G352K7NR7;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/RBShareExtension/RBShareExtension-Prefix.pch";
 				INFOPLIST_FILE = RBShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (

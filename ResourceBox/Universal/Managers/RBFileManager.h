@@ -27,6 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)copyItemFromPath:(NSString *)fromPath toPath:(NSString *)toPath error:(NSError **)error;
 + (BOOL)copyItemFromURL:(NSURL *)fromURL toURL:(NSURL *)toURL error:(NSError **)error;
 
+#pragma mark - RBShareExtension
++ (NSString *)shareExtensionWeiboImagesFolderPath;
++ (NSString *)shareExtensionFilePathForShareImageWithName:(NSString *)fileName;
+
 #pragma mark - File Path
 + (NSArray<NSString *> *)filePathsInFolder:(NSString *)folderPath;
 + (NSArray<NSString *> *)filePathsInFolder:(NSString *)folderPath extensions:(NSArray<NSString *> *)extensions;

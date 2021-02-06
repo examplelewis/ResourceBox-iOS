@@ -19,3 +19,16 @@ pod 'IQKeyboardManager'
 pod 'YYText'
 
 end
+
+target 'RBShareExtension' do
+
+pod 'AFNetworking'
+pod 'CocoaLumberjack'
+pod 'BlocksKit'
+pod 'SDWebImage'
+pod 'Masonry'
+pod 'DateTools'
+pod 'Toast'
+pod 'YYText'
+
+end
