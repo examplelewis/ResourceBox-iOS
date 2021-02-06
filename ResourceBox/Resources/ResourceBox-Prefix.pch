@@ -18,6 +18,8 @@
 #import <BlocksKit/BlocksKit.h>
 #import <Masonry.h>
 //#import <YYModel.h>
+#import <UIView+Toast.h>
+
 #import "RACEXTScope.h"
 #import "YYCategories.h"
 

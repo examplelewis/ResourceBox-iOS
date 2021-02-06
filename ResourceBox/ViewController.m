@@ -33,10 +33,10 @@
 - (void)setupUIAndData {
     // Data
     self.listData = @[
-        @[@"查询已抓取的图片数量(Group)", @"查询已抓取的图片数量(App)"]
+        @[@"查询已抓取的图片数量(Group)", @"查询已抓取的图片数量(App)", @"Group 移动至 App", @"清空 文件夹"]
     ];
     self.headerData = @[
-        @"微博分享"
+        @"图片分享"
     ];
     
     // UI

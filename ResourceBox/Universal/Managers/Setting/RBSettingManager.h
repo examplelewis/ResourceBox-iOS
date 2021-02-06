@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) AppDelegate *appDelegate;
 //@property (nonatomic, strong, readonly) UIWindow *keyWindow;
+@property (nonatomic, strong, readonly) UINavigationController *navigationController;
 @property (nonatomic, strong, readonly) ViewController *viewController;
 
 @property (nonatomic, strong, readonly) NSArray *mimeImageTypes;

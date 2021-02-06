@@ -59,6 +59,28 @@
     return [RBFileManager copyItemFromPath:[RBFileManager filePathFromFileURL:fromURL] toPath:[RBFileManager filePathFromFileURL:toURL] error:error];
 }
 
+#pragma mark - Delete
++ (BOOL)removeFilePath:(NSString *)filePath {
+    NSError *error;
+    if ([[NSFileManager defaultManager] removeItemAtPath:filePath error:&error]) {
+        [[RBLogManager defaultManager] addDefaultLogWithFormat:@"%@ 已经被删除", filePath.lastPathComponent];
+        return YES;
+    } else {
+        [[RBLogManager defaultManager] addErrorLogWithFormat:@"删除文件 %@ 时发生错误: %@", filePath.lastPathComponent, error.localizedDescription];
+        return NO;
+    }
+}
++ (BOOL)removeFileURL:(NSURL *)fileURL {
+    NSError *error;
+    if ([[NSFileManager defaultManager] removeItemAtURL:fileURL error:&error]) {
+        [[RBLogManager defaultManager] addDefaultLogWithFormat:@"%@ 已经被删除", fileURL.path.lastPathComponent];
+        return YES;
+    } else {
+        [[RBLogManager defaultManager] addErrorLogWithFormat:@"删除文件 %@ 时发生错误: %@", fileURL.path.lastPathComponent, error.localizedDescription];
+        return NO;
+    }
+}
+
 #pragma mark - RBShareExtension
 + (NSURL *)containerURL {
     return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.gongyuTest.ResourceBox"];

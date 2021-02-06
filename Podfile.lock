@@ -42,7 +42,6 @@ PODS:
     - SDWebImage/Core (= 5.9.1)
   - SDWebImage/Core (5.9.1)
   - SSZipArchive (2.2.3)
-  - SVProgressHUD (2.2.5)
   - Toast (4.0.0)
   - YYText (1.0.7)
 
@@ -56,7 +55,6 @@ DEPENDENCIES:
   - Masonry
   - SDWebImage
   - SSZipArchive
-  - SVProgressHUD
   - Toast
   - YYText
 
@@ -71,7 +69,6 @@ SPEC REPOS:
     - Masonry
     - SDWebImage
     - SSZipArchive
-    - SVProgressHUD
     - Toast
     - YYText
 
@@ -85,10 +82,9 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 219cfe46c3a2a16cdbd395934d82be01a5ca0ae7
+PODFILE CHECKSUM: a71f4328c42ca8bda89e8e74f9f3ce029d503473
 
 COCOAPODS: 1.9.1

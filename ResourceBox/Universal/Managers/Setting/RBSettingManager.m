@@ -46,6 +46,7 @@
 }
 - (void)updateViewController:(ViewController *)viewController {
     _viewController = viewController;
+    _navigationController = viewController.navigationController;
 }
 - (void)updatePreferences {
     NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:[self pathOfContentInDocumentFolder:@"RBPreference.plist"]];

@@ -27,6 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)copyItemFromPath:(NSString *)fromPath toPath:(NSString *)toPath error:(NSError **)error;
 + (BOOL)copyItemFromURL:(NSURL *)fromURL toURL:(NSURL *)toURL error:(NSError **)error;
 
+#pragma mark - Remove
++ (BOOL)removeFilePath:(NSString *)filePath;
++ (BOOL)removeFileURL:(NSURL *)fileURL;
+
 #pragma mark - RBShareExtension
 + (NSString *)shareExtensionWeiboImagesAppContainerFolderPath;
 + (NSString *)shareExtensionWeiboImagesGroupContainerFolderPath;
