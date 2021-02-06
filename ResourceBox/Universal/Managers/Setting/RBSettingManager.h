@@ -8,31 +8,39 @@
 
 #import <Foundation/Foundation.h>
 
+#import "AppDelegate.h"
+#import "ViewController.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RBSettingManager : NSObject
 
-@property (strong, readonly) NSArray *mimeImageTypes;
-@property (strong, readonly) NSArray *mimeVideoTypes;
-@property (strong, readonly) NSArray *mimeImageAndVideoTypes;
+@property (nonatomic, strong, readonly) AppDelegate *appDelegate;
+//@property (nonatomic, strong, readonly) UIWindow *keyWindow;
+@property (nonatomic, strong, readonly) ViewController *viewController;
+
+@property (nonatomic, strong, readonly) NSArray *mimeImageTypes;
+@property (nonatomic, strong, readonly) NSArray *mimeVideoTypes;
+@property (nonatomic, strong, readonly) NSArray *mimeImageAndVideoTypes;
 
 
-@property (strong, readonly) NSString *homePath;
-@property (strong, readonly) NSString *documentPath;
-@property (strong, readonly) NSString *libraryPath;
-@property (strong, readonly) NSString *cachesPath;
-@property (strong, readonly) NSString *applicationSupportPath;
-@property (strong, readonly) NSString *preferencePath;
-@property (strong, readonly) NSString *temPath;
+@property (nonatomic, strong, readonly) NSString *homePath;
+@property (nonatomic, strong, readonly) NSString *documentPath;
+@property (nonatomic, strong, readonly) NSString *libraryPath;
+@property (nonatomic, strong, readonly) NSString *cachesPath;
+@property (nonatomic, strong, readonly) NSString *applicationSupportPath;
+@property (nonatomic, strong, readonly) NSString *preferencePath;
+@property (nonatomic, strong, readonly) NSString *temPath;
 
-@property (strong, readonly) NSString *mainDatabasesFolderPath;
-@property (strong, readonly) NSString *preferenceFilePath;
+@property (nonatomic, strong, readonly) NSString *mainDatabasesFolderPath;
+@property (nonatomic, strong, readonly) NSString *preferenceFilePath;
 
 #pragma mark - Lifecycle
 + (instancetype)defaultManager;
 
 #pragma mark - Configure
-- (void)updatePreferences;
+- (void)updateAppDelegate:(AppDelegate *)appDelegate;
+- (void)updateViewController:(ViewController *)viewController;
 
 #pragma mark - Types
 - (BOOL)isImageAtFilePath:(NSString *)filePath;

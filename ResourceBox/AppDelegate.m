@@ -21,6 +21,8 @@
     
     [self setupLogger];
     
+    [[RBSettingManager defaultManager] updateAppDelegate:self];
+    
     return YES;
 }
 

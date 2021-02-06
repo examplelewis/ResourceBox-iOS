@@ -6,17 +6,69 @@
 //
 
 #import "ViewController.h"
+#import "RBWeiboShareManager.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, copy) NSArray<NSArray *> *listData;
+@property (nonatomic, copy) NSArray<NSString *> *headerData;
 
 @end
 
 @implementation ViewController
 
+#pragma mark - Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [[RBSettingManager defaultManager] updateViewController:self];
+    
+    self.title = @"列表";
+    
+    [self setupUIAndData];
 }
 
+#pragma mark - Configure
+- (void)setupUIAndData {
+    // Data
+    self.listData = @[
+        @[@"查询已抓取的图片数量(Group)", @"查询已抓取的图片数量(App)"]
+    ];
+    self.headerData = @[
+        @"微博分享"
+    ];
+    
+    // UI
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.listData.count;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.listData[section] count];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    cell.textLabel.text = self.listData[indexPath.section][indexPath.row];
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+        [RBWeiboShareManager cellDidPressAtIndex:indexPath.row];
+    }
+}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return self.headerData[section];
+}
 
 @end

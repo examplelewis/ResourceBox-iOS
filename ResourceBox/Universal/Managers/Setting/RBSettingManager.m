@@ -41,6 +41,12 @@
 }
 
 #pragma mark - Configure
+- (void)updateAppDelegate:(AppDelegate *)appDelegate {
+    _appDelegate = appDelegate;
+}
+- (void)updateViewController:(ViewController *)viewController {
+    _viewController = viewController;
+}
 - (void)updatePreferences {
     NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:[self pathOfContentInDocumentFolder:@"RBPreference.plist"]];
     

@@ -63,7 +63,10 @@
 + (NSURL *)containerURL {
     return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.gongyuTest.ResourceBox"];
 }
-+ (NSString *)shareExtensionWeiboImagesFolderPath {
++ (NSString *)shareExtensionWeiboImagesAppContainerFolderPath {
+    return [[RBSettingManager defaultManager].documentPath stringByAppendingPathComponent:@"WeiboImages"];
+}
++ (NSString *)shareExtensionWeiboImagesGroupContainerFolderPath {
     return [[RBFileManager containerURL].path stringByAppendingPathComponent:@"WeiboImages"];
 }
 + (NSString *)shareExtensionFilePathForShareImageWithName:(NSString *)fileName {
