@@ -290,8 +290,8 @@
 		AC38215D25CEEDE8004ECB23 /* ShareImage */ = {
 			isa = PBXGroup;
 			children = (
-				AC38215E25CEEDE8004ECB23 /* RBShareImageManager.m */,
 				AC38215F25CEEDE8004ECB23 /* RBShareImageManager.h */,
+				AC38215E25CEEDE8004ECB23 /* RBShareImageManager.m */,
 				AC38216025CEEDE8004ECB23 /* FetchResult */,
 			);
 			path = ShareImage;
@@ -300,14 +300,14 @@
 		AC38216025CEEDE8004ECB23 /* FetchResult */ = {
 			isa = PBXGroup;
 			children = (
+				AC38216325CEEDE8004ECB23 /* RBShareImageFetchResultManager.h */,
+				AC38216825CEEDE8004ECB23 /* RBShareImageFetchResultManager.m */,
+				AC38216425CEEDE8004ECB23 /* RBShareImageFetchResultViewController.h */,
+				AC38216725CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m */,
+				AC38216625CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib */,
+				AC38216525CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.h */,
 				AC38216125CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m */,
 				AC38216225CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib */,
-				AC38216325CEEDE8004ECB23 /* RBShareImageFetchResultManager.h */,
-				AC38216425CEEDE8004ECB23 /* RBShareImageFetchResultViewController.h */,
-				AC38216525CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.h */,
-				AC38216625CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib */,
-				AC38216725CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m */,
-				AC38216825CEEDE8004ECB23 /* RBShareImageFetchResultManager.m */,
 			);
 			path = FetchResult;
 			sourceTree = "<group>";

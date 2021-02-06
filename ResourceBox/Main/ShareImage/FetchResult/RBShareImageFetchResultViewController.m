@@ -48,6 +48,7 @@
             rootFolderPath = [RBFileManager shareExtensionShareImagesGroupContainerFolderPath];
         }
     }
+    [RBFileManager createFolderAtPath:rootFolderPath];
     
     NSArray *folderPaths = [RBFileManager folderPathsInFolder:rootFolderPath];
     for (NSInteger i = 0; i < folderPaths.count; i++) {
