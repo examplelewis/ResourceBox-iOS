@@ -16,6 +16,7 @@ pod 'SSZipArchive'
 pod 'FMDB'
 pod 'IQKeyboardManager'
 pod 'YYText'
+pod 'MWPhotoBrowser'
 
 end
 
