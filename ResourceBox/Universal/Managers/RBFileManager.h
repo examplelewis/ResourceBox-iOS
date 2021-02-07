@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)removeFilePath:(NSString *)filePath;
 + (BOOL)removeFileURL:(NSURL *)fileURL;
 
+#pragma mark - Size
++ (unsigned long long int)sizeOfFolderAtPath:(NSString *)folderPath;
+
 #pragma mark - RBShareExtension
 + (NSString *)shareExtensionShareImagesAppContainerFolderPath;
 + (NSString *)shareExtensionShareImagesGroupContainerFolderPath;

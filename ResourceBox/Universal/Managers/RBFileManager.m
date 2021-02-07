@@ -83,6 +83,17 @@ static NSString * kShareExtensionShareImagesFolderName = @"ShareImages";
     }
 }
 
+#pragma mark - Size
++ (unsigned long long int)sizeOfFolderAtPath:(NSString *)folderPath {
+    unsigned long long int fileSize = 0;
+    NSArray *filePaths = [RBFileManager allFilePathsInFolder:folderPath];
+    for (NSString *filePath in filePaths) {
+        fileSize += [[RBFileManager attribute:NSFileSize ofItemAtPath:filePath] longLongValue];
+    }
+
+    return fileSize;
+}
+
 #pragma mark - RBShareExtension
 + (NSURL *)containerURL {
     return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.gongyuTest.ResourceBox"];

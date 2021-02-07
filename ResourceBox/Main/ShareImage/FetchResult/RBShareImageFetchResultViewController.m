@@ -59,7 +59,7 @@
         NSString *name = @"[未知用户名]";
         NSString *text = @"[未知内容]";
         NSString *date = @"[未知时间]";
-        NSNumber *count = @([RBFileManager filePathsInFolder:folderPath].count);
+        NSString *count = [NSString stringWithFormat:@"%ld / %.2fMB", [RBFileManager filePathsInFolder:folderPath].count, [RBFileManager sizeOfFolderAtPath:folderPath] / 1024.0f / 1024.0f];
         
         if (folderComponents.count > 0) {
             name = folderComponents.firstObject;
