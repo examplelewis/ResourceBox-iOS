@@ -75,6 +75,8 @@
         [self.listData addObject:NSDictionaryOfVariableBindings(name, text, date, count, folderPath)];
     }
     
+    [self.listData sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]]; // 按时间倒序排列
+    
     [self.tableView reloadData];
 }
 
