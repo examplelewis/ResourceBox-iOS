@@ -44,15 +44,17 @@
     
     [self setupUIAndData];
     
-    [self.indicator startAnimating];
-    
-    __weak __typeof(self)weakSelf = self;
+    @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        __strong __typeof(weakSelf)strongSelf = weakSelf;
-        
-        [strongSelf readItems];
-        [strongSelf startTimer];
+        @strongify(self);
+        [self readItems];
     });
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.indicator startAnimating];
+    [self startTimer];
 }
 
 #pragma mark - Configure
@@ -106,10 +108,9 @@
 
         if ([provider hasItemConformingToTypeIdentifier:@"public.url"]) {
             [provider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(NSURL *URL, NSError *error) {
-                if (URL) {
-                    self.URL = URL;
-                }
+                @strongify(self);
                 
+                self.URL = URL;
                 [self finishReadItems];
             }];
         }
@@ -117,18 +118,17 @@
 }
 - (void)finishReadItems {
     NSExtensionItem *item = (NSExtensionItem *)self.extensionContext.inputItems.firstObject;
-    NSItemProvider *provider = (NSItemProvider *)item.attachments.firstObject;
-    if (!self.URL || !self.text || self.imageFilePaths.count + 2 < provider.registeredTypeIdentifiers.count) {
+    if (!self.URL || !self.text || self.imageFilePaths.count + 2 < item.attachments.count) {
         return;
     }
     
-    __weak __typeof(self)weakSelf = self;
+    @weakify(self);
     dispatch_async(dispatch_get_main_queue(), ^{
-        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        @strongify(self);
         
-        [strongSelf resetTimer];
-        [strongSelf stopReading];
-        [strongSelf processInfo];
+        [self resetTimer];
+        [self stopReading];
+        [self processInfo];
     });
 }
 - (void)stopReading {
@@ -246,14 +246,9 @@
 - (void)timerClicked:(NSTimer *)sender {
     if (self.countDown < 1) {
         if (!self.loadSuccess) {
-            __weak __typeof(self)weakSelf = self;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                __strong __typeof(weakSelf)strongSelf = weakSelf;
-                
-                [strongSelf resetTimer];
-                [strongSelf stopReading];
-                [strongSelf processInfo];
-            });
+            [self resetTimer];
+            [self stopReading];
+            [self processInfo];
         }
     } else {
         self.countDown -= 1;
