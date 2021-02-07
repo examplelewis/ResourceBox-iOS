@@ -78,34 +78,36 @@
         NSItemProvider *provider = (NSItemProvider *)item.attachments[i];
 //        NSLog(@"%@", provider.registeredTypeIdentifiers);
         
+        @weakify(self);
         if ([provider hasItemConformingToTypeIdentifier:@"public.plain-text"]) {
             [provider loadItemForTypeIdentifier:@"public.plain-text" options:nil completionHandler:^(NSString *text, NSError *error) {
-                if (text) {
-                    self.text = text;
-                }
+                @strongify(self);
                 
+                self.text = text;
                 [self finishReadItems];
             }];
         }
-        
         if ([provider hasItemConformingToTypeIdentifier:@"public.image"]) {
+            // 尽量遵循原图片尺寸、格式
             [provider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(NSData *data, NSError *error) {
                 if (data) {
-                    NSString *fileNamePrefix = [NSString stringWithFormat:@"%@", self.startDate];
-                    NSString *fileNameSuffix = [NSString stringWithFormat:@"%@", [self.startDate dateByAddingTimeInterval:i + 100]];
-                    NSString *fileNameAndExt = [NSString stringWithFormat:@"%@%@.%@", fileNamePrefix.md5String.md5Middle, fileNameSuffix.md5String.md5Middle, [self extensionForImageData:data]];
+                    @strongify(self);
                     
-                    NSString *imageFilePath = [RBFileManager shareExtensionFilePathForShareImageWithName:fileNameAndExt];
-//                    NSLog(@"imageFilePath: %@", imageFilePath);
-                    [data writeToFile:imageFilePath atomically:YES];
-                    
-                    self.imageFilePaths = [self.imageFilePaths arrayByAddingObject:imageFilePath];
+                    [self processData:data atIndex:i];
+                    [self finishReadItems];
+                } else if (error.code == -1200) {
+                    // -1200 的错误出现意味着，转换成Data失败，需要直接显示成Image
+                    [provider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error) {
+                        if (image) {
+                            @strongify(self);
+                            
+                            [self processData:UIImagePNGRepresentation(image) atIndex:i];
+                            [self finishReadItems];
+                        }
+                    }];
                 }
-                
-                [self finishReadItems];
             }];
         }
-
         if ([provider hasItemConformingToTypeIdentifier:@"public.url"]) {
             [provider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(NSURL *URL, NSError *error) {
                 @strongify(self);
@@ -115,6 +117,17 @@
             }];
         }
     }
+}
+- (void)processData:(NSData *)data atIndex:(NSInteger)index {
+    NSString *fileNamePrefix = [NSString stringWithFormat:@"%@", self.startDate];
+    NSString *fileNameSuffix = [NSString stringWithFormat:@"%@", [self.startDate dateByAddingTimeInterval:index + 100]];
+    NSString *fileNameAndExt = [NSString stringWithFormat:@"%@%@.%@", fileNamePrefix.md5String.md5Middle, fileNameSuffix.md5String.md5Middle, [self extensionForImageData:data]];
+    
+    NSString *imageFilePath = [RBFileManager shareExtensionFilePathForShareImageWithName:fileNameAndExt];
+//    NSLog(@"imageFilePath: %@", imageFilePath);
+    [data writeToFile:imageFilePath atomically:YES];
+    
+    self.imageFilePaths = [self.imageFilePaths arrayByAddingObject:imageFilePath];
 }
 - (void)finishReadItems {
     NSExtensionItem *item = (NSExtensionItem *)self.extensionContext.inputItems.firstObject;

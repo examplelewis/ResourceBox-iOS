@@ -89,8 +89,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIm-kb-VLa">
                     <rect key="frame" x="0.0" y="97" width="414" height="77"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在读取，稍等片刻(60)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4W-6Z-loi">
-                            <rect key="frame" x="112.5" y="48" width="189" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在读取，稍等片刻(15)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4W-6Z-loi">
+                            <rect key="frame" x="114" y="48" width="186" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="CvC-j9-aXV"/>
                             </constraints>
