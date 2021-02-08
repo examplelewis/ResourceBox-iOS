@@ -48,7 +48,7 @@ static NSInteger const maxTimerCountDown = 30;
     @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         @strongify(self);
-        [self readItems];
+        [self readItemsAtIndex:0];
     });
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -73,10 +73,14 @@ static NSInteger const maxTimerCountDown = 30;
 }
 
 #pragma mark - Read
-- (void)readItems {
+- (void)readItemsAtIndex:(NSInteger)index {
     NSExtensionItem *item = (NSExtensionItem *)self.extensionContext.inputItems.firstObject;
-    for (NSInteger i = 0; i < item.attachments.count; i++) {
-        NSItemProvider *provider = (NSItemProvider *)item.attachments[i];
+    if (index >= item.attachments.count) {
+        [self finishReadItems];
+        return;
+    }
+//    for (NSInteger i = 0; i < item.attachments.count; i++) {
+        NSItemProvider *provider = (NSItemProvider *)item.attachments[index];
 //        NSLog(@"%@", provider.registeredTypeIdentifiers);
         
         @weakify(self);
@@ -85,7 +89,7 @@ static NSInteger const maxTimerCountDown = 30;
                 @strongify(self);
                 
                 self.text = text;
-                [self finishReadItems];
+                [self readItemsAtIndex:index + 1];
             }];
         }
         if ([provider hasItemConformingToTypeIdentifier:@"public.image"]) {
@@ -94,18 +98,21 @@ static NSInteger const maxTimerCountDown = 30;
                 if (data) {
                     @strongify(self);
                     
-                    [self processData:data atIndex:i];
-                    [self finishReadItems];
+                    [self processData:data atIndex:index];
+                    [self readItemsAtIndex:index + 1];
                 } else if (error.code == -1200) {
                     // -1200 的错误出现意味着，转换成Data失败，需要直接显示成Image
                     [provider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error) {
+                        @strongify(self);
+                        
                         if (image) {
-                            @strongify(self);
-                            
-                            [self processData:UIImagePNGRepresentation(image) atIndex:i];
-                            [self finishReadItems];
+                            [self processData:UIImageJPEGRepresentation(image, 1.0f) atIndex:index];
                         }
+                        
+                        [self readItemsAtIndex:index + 1];
                     }];
+                } else {
+                    [self readItemsAtIndex:index + 1];
                 }
             }];
         }
@@ -114,10 +121,10 @@ static NSInteger const maxTimerCountDown = 30;
                 @strongify(self);
                 
                 self.URL = URL;
-                [self finishReadItems];
+                [self readItemsAtIndex:index + 1];
             }];
         }
-    }
+//    }
 }
 - (void)processData:(NSData *)data atIndex:(NSInteger)index {
     NSString *fileNamePrefix = [NSString stringWithFormat:@"%@", self.startDate];
@@ -131,10 +138,10 @@ static NSInteger const maxTimerCountDown = 30;
     self.imageFilePaths = [self.imageFilePaths arrayByAddingObject:imageFilePath];
 }
 - (void)finishReadItems {
-    NSExtensionItem *item = (NSExtensionItem *)self.extensionContext.inputItems.firstObject;
-    if (!self.URL || !self.text || self.imageFilePaths.count + 2 < item.attachments.count) {
-        return;
-    }
+//    NSExtensionItem *item = (NSExtensionItem *)self.extensionContext.inputItems.firstObject;
+//    if (!self.URL || !self.text || self.imageFilePaths.count + 2 < item.attachments.count) {
+//        return;
+//    }
     
     @weakify(self);
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -175,6 +182,10 @@ static NSInteger const maxTimerCountDown = 30;
     self.imageNumsLabel.text = [NSString stringWithFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%d 条 public.url\n%ld 条 public.image\n目标文件夹: %@\n共移动%ld条图片至目标文件夹", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.URL ? 1 : 0, self.imageFilePaths.count, folderName, [RBFileManager filePathsInFolder:folderPath].count];
 }
 - (NSString *)folderNameFromWeiboText {
+    if (!self.text.isNotEmpty) {
+        return @"[未知名称]";
+    }
+    
     RBShareTextModel *model = [[RBShareTextModel alloc] initWithText:self.text];
     
     // 1、先添加用户昵称
