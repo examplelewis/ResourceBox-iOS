@@ -10,6 +10,8 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "RBShareTextModel.h"
 
+static NSInteger const maxTimerCountDown = 5;
+
 @interface RBShareViewController ()
 
 @property (nonatomic, copy) NSArray *imageFilePaths;
@@ -252,7 +254,7 @@
 
 #pragma mark - Timer
 - (void)startTimer {
-    self.countDown = 15;
+    self.countDown = maxTimerCountDown;
     self.timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(timerClicked:) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
@@ -269,7 +271,7 @@
     }
 }
 - (void)resetTimer {
-    self.countDown = 15;
+    self.countDown = maxTimerCountDown;
     self.waitingLabel.text = [NSString stringWithFormat:@"正在读取，稍等片刻(%02ld)", self.countDown];
     [self.timer invalidate];
     self.timer = nil;
