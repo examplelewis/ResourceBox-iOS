@@ -9,6 +9,7 @@
 #import "RBShareImageFetchResultTableViewCell.h"
 
 #import <MWPhotoBrowser.h>
+#import <MJRefresh.h>
 
 @interface RBShareImageFetchResultViewController () <UITableViewDelegate, UITableViewDataSource, MWPhotoBrowserDelegate>
 
@@ -25,7 +26,8 @@
     [super viewDidLoad];
     
     [self setupUIAndData];
-    [self refresh];
+    
+    [self.tableView.mj_header beginRefreshing];
 }
 
 #pragma mark - Configure
@@ -38,16 +40,34 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 176;
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
 }
 - (void)refresh {
+    @weakify(self);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        @strongify(self);
+        [self _refresh];
+    });
+}
+- (void)_refresh {
+    [self.listData removeAllObjects];
+    
     NSString *rootFolderPath = @"";
     if (self.behavior & RBShareImageFetchResultBehaviorSourceWeibo) {
         if (self.behavior & RBShareImageFetchResultBehaviorContainerApp) {
-            self.title = @"查询已抓取的图片数量(App)";
+            @weakify(self);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @strongify(self);
+                self.title = @"查询已抓取的图片数量(App)";
+            });
             rootFolderPath = [RBFileManager shareExtensionShareImagesAppContainerFolderPath];
         }
         if (self.behavior & RBShareImageFetchResultBehaviorContainerGroup) {
-            self.title = @"查询已抓取的图片数量(Group)";
+            @weakify(self);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @strongify(self);
+                self.title = @"查询已抓取的图片数量(Group)";
+            });
             rootFolderPath = [RBFileManager shareExtensionShareImagesGroupContainerFolderPath];
         }
     }
@@ -77,7 +97,13 @@
     
     [self.listData sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]]; // 按时间倒序排列
     
-    [self.tableView reloadData];
+    @weakify(self);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @strongify(self);
+        
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView reloadData];
+    });
 }
 
 #pragma mark - UITableViewDataSource
