@@ -17,6 +17,7 @@ pod 'FMDB'
 pod 'IQKeyboardManager'
 pod 'YYText'
 pod 'MWPhotoBrowser'
+pod 'MJRefresh'
 
 end
 
