@@ -16,7 +16,6 @@ static NSInteger const maxTimerCountDown = 30;
 
 @property (nonatomic, copy) NSArray *imageFilePaths;
 @property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) NSURL *URL;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, assign) NSInteger loadCount;
 @property (nonatomic, assign) BOOL loadSuccess;
@@ -24,11 +23,10 @@ static NSInteger const maxTimerCountDown = 30;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) NSInteger countDown;
 
-@property (strong, nonatomic) IBOutlet UIButton *postButton;
+@property (strong, nonatomic) IBOutlet UIButton *closeButton;
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UITextView *statusTextView;
-@property (strong, nonatomic) IBOutlet UIButton *URLButton;
 @property (strong, nonatomic) IBOutlet UILabel *imageNumsLabel;
 
 @property (strong, nonatomic) IBOutlet UIView *waitingView;
@@ -126,12 +124,7 @@ static NSInteger const maxTimerCountDown = 30;
         }];
     }
     if ([provider hasItemConformingToTypeIdentifier:@"public.url"]) {
-        [provider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(NSURL *URL, NSError *error) {
-            @strongify(self);
-            
-            self.URL = URL;
-            [self readItemsAtIndex:index + 1];
-        }];
+        [self readItemsAtIndex:index + 1];
     }
 }
 - (void)processData:(NSData *)data atIndex:(NSInteger)index {
@@ -163,8 +156,7 @@ static NSInteger const maxTimerCountDown = 30;
     self.contentView.hidden = NO;
     
     self.statusTextView.text = self.text;
-    [self.URLButton setTitle:self.URL.absoluteString forState:UIControlStateNormal];
-    self.imageNumsLabel.text = [NSString stringWithFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%d 条 public.url\n%ld 条 public.image", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.URL ? 1 : 0, self.imageFilePaths.count];
+    self.imageNumsLabel.text = [NSString stringWithFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%ld 条 public.image", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.imageFilePaths.count];
 }
 
 #pragma mark - Process
@@ -182,7 +174,7 @@ static NSInteger const maxTimerCountDown = 30;
         [[RBLogManager defaultManager] addDefaultLogWithFormat:@"移动后: %@", destPath];
     }
     
-    self.imageNumsLabel.text = [NSString stringWithFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%d 条 public.url\n%ld 条 public.image\n目标文件夹: %@\n共移动%ld条图片至目标文件夹", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.URL ? 1 : 0, self.imageFilePaths.count, folderName, [RBFileManager filePathsInFolder:folderPath].count];
+    self.imageNumsLabel.text = [NSString stringWithFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%ld 条 public.image\n\n目标文件夹: %@\n\n共移动%ld条图片至目标文件夹", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.imageFilePaths.count, folderName, [RBFileManager filePathsInFolder:folderPath].count];
 }
 - (NSString *)folderNameFromWeiboText {
     if (!self.text.isNotEmpty) {
@@ -291,7 +283,7 @@ static NSInteger const maxTimerCountDown = 30;
 }
 
 #pragma mark - IBAction
-- (IBAction)postButtonDidPress:(UIButton *)sender {
+- (IBAction)closeButtonDidPress:(UIButton *)sender {
     [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
 }
 
