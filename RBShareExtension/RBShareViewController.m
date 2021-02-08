@@ -79,61 +79,60 @@ static NSInteger const maxTimerCountDown = 30;
         [self finishReadItems];
         return;
     }
-//    for (NSInteger i = 0; i < item.attachments.count; i++) {
-        NSItemProvider *provider = (NSItemProvider *)item.attachments[index];
-//        NSLog(@"%@", provider.registeredTypeIdentifiers);
-        
-        @weakify(self);
-        if ([provider hasItemConformingToTypeIdentifier:@"public.plain-text"]) {
-            [provider loadItemForTypeIdentifier:@"public.plain-text" options:nil completionHandler:^(NSString *text, NSError *error) {
+    
+    NSItemProvider *provider = (NSItemProvider *)item.attachments[index];
+//    NSLog(@"%@", provider.registeredTypeIdentifiers);
+    
+    @weakify(self);
+    if ([provider hasItemConformingToTypeIdentifier:@"public.plain-text"]) {
+        [provider loadItemForTypeIdentifier:@"public.plain-text" options:nil completionHandler:^(NSString *text, NSError *error) {
+            @strongify(self);
+            
+            self.text = text;
+            [self readItemsAtIndex:index + 1];
+        }];
+    }
+    if ([provider hasItemConformingToTypeIdentifier:@"public.image"]) {
+        // 尽量遵循原图片尺寸、格式
+        [provider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(NSData *data, NSError *error) {
+            if (data) {
                 @strongify(self);
                 
-                self.text = text;
+                [self processData:data atIndex:index];
+                
+                // 经试验暂时不需要延迟
+                // 手动等待0.5秒，等data释放了之后再进行下一次操作，减少因为内存消耗超过120MB而Crash的可能
+                // [NSThread sleepForTimeInterval:0.5f];
+                
                 [self readItemsAtIndex:index + 1];
-            }];
-        }
-        if ([provider hasItemConformingToTypeIdentifier:@"public.image"]) {
-            // 尽量遵循原图片尺寸、格式
-            [provider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(NSData *data, NSError *error) {
-                if (data) {
+            } else if (error.code == -1200) {
+                // -1200 的错误出现意味着，转换成Data失败，需要直接显示成Image
+                [provider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error) {
                     @strongify(self);
                     
-                    [self processData:data atIndex:index];
+                    if (image) {
+                        [self processData:UIImagePNGRepresentation(image) atIndex:index];
+                    }
                     
                     // 经试验暂时不需要延迟
                     // 手动等待0.5秒，等data释放了之后再进行下一次操作，减少因为内存消耗超过120MB而Crash的可能
                     // [NSThread sleepForTimeInterval:0.5f];
                     
                     [self readItemsAtIndex:index + 1];
-                } else if (error.code == -1200) {
-                    // -1200 的错误出现意味着，转换成Data失败，需要直接显示成Image
-                    [provider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error) {
-                        @strongify(self);
-                        
-                        if (image) {
-                            [self processData:UIImageJPEGRepresentation(image, 1.0f) atIndex:index];
-                        }
-                        
-                        // 经试验暂时不需要延迟
-                        // 手动等待0.5秒，等data释放了之后再进行下一次操作，减少因为内存消耗超过120MB而Crash的可能
-                        // [NSThread sleepForTimeInterval:0.5f];
-                        
-                        [self readItemsAtIndex:index + 1];
-                    }];
-                } else {
-                    [self readItemsAtIndex:index + 1];
-                }
-            }];
-        }
-        if ([provider hasItemConformingToTypeIdentifier:@"public.url"]) {
-            [provider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(NSURL *URL, NSError *error) {
-                @strongify(self);
-                
-                self.URL = URL;
+                }];
+            } else {
                 [self readItemsAtIndex:index + 1];
-            }];
-        }
-//    }
+            }
+        }];
+    }
+    if ([provider hasItemConformingToTypeIdentifier:@"public.url"]) {
+        [provider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(NSURL *URL, NSError *error) {
+            @strongify(self);
+            
+            self.URL = URL;
+            [self readItemsAtIndex:index + 1];
+        }];
+    }
 }
 - (void)processData:(NSData *)data atIndex:(NSInteger)index {
     NSString *fileNamePrefix = [NSString stringWithFormat:@"%@", self.startDate];
@@ -147,11 +146,6 @@ static NSInteger const maxTimerCountDown = 30;
     self.imageFilePaths = [self.imageFilePaths arrayByAddingObject:imageFilePath];
 }
 - (void)finishReadItems {
-//    NSExtensionItem *item = (NSExtensionItem *)self.extensionContext.inputItems.firstObject;
-//    if (!self.URL || !self.text || self.imageFilePaths.count + 2 < item.attachments.count) {
-//        return;
-//    }
-    
     @weakify(self);
     dispatch_async(dispatch_get_main_queue(), ^{
         @strongify(self);
