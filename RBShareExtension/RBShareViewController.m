@@ -111,7 +111,7 @@ static NSInteger const maxTimerCountDown = 30;
                     @strongify(self);
                     
                     if (image) {
-                        [self processData:UIImagePNGRepresentation(image) atIndex:index];
+                        [self processData:UIImageJPEGRepresentation(image, 0.95f) atIndex:index];
                     }
                     
                     // 经试验暂时不需要延迟
