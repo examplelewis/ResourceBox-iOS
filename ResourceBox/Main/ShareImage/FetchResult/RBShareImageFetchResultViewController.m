@@ -154,6 +154,32 @@
     // Present
     [self.navigationController pushViewController:browser animated:YES];
 }
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle != UITableViewCellEditingStyleDelete) {
+        return;
+    }
+    
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"是否删除该文件夹？" message:@"此操作不可恢复" preferredStyle:UIAlertControllerStyleAlert];
+    
+    @weakify(self);
+    UIAlertAction *cancelAA = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    UIAlertAction *confirmAA = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        @strongify(self);
+        
+        NSString *folderPath = self.listData[indexPath.row][@"folderPath"];
+        [RBFileManager removeFilePath:folderPath];
+        [self.listData removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+    }];
+    
+    [ac addAction:cancelAA];
+    [ac addAction:confirmAA];
+    
+    [[RBSettingManager defaultManager].navigationController.visibleViewController presentViewController:ac animated:YES completion:^{}];
+}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
 
 #pragma mark - MWPhotoBrowserDelegate
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
