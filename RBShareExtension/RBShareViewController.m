@@ -99,6 +99,11 @@ static NSInteger const maxTimerCountDown = 30;
                     @strongify(self);
                     
                     [self processData:data atIndex:index];
+                    
+                    // 经试验暂时不需要延迟
+                    // 手动等待0.5秒，等data释放了之后再进行下一次操作，减少因为内存消耗超过120MB而Crash的可能
+                    // [NSThread sleepForTimeInterval:0.5f];
+                    
                     [self readItemsAtIndex:index + 1];
                 } else if (error.code == -1200) {
                     // -1200 的错误出现意味着，转换成Data失败，需要直接显示成Image
@@ -108,6 +113,10 @@ static NSInteger const maxTimerCountDown = 30;
                         if (image) {
                             [self processData:UIImageJPEGRepresentation(image, 1.0f) atIndex:index];
                         }
+                        
+                        // 经试验暂时不需要延迟
+                        // 手动等待0.5秒，等data释放了之后再进行下一次操作，减少因为内存消耗超过120MB而Crash的可能
+                        // [NSThread sleepForTimeInterval:0.5f];
                         
                         [self readItemsAtIndex:index + 1];
                     }];
