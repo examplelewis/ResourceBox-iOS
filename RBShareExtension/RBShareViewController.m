@@ -10,7 +10,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "RBShareTextModel.h"
 
-static NSInteger const maxTimerCountDown = 5;
+static NSInteger const maxTimerCountDown = 30;
 
 @interface RBShareViewController ()
 
@@ -25,7 +25,6 @@ static NSInteger const maxTimerCountDown = 5;
 @property (nonatomic, assign) NSInteger countDown;
 
 @property (strong, nonatomic) IBOutlet UIButton *postButton;
-@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UITextView *statusTextView;
@@ -280,9 +279,6 @@ static NSInteger const maxTimerCountDown = 5;
 #pragma mark - IBAction
 - (IBAction)postButtonDidPress:(UIButton *)sender {
     [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
-}
-- (IBAction)cancelButtonDidPress:(UIButton *)sender {
-    [self.extensionContext cancelRequestWithError:[NSError errorWithDomain:@"CustomShareError" code:NSUserCancelledError userInfo:nil]];
 }
 
 @end
