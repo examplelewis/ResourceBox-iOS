@@ -209,16 +209,16 @@ static NSInteger const maxTimerCountDown = 30;
             folderName = [folderName stringByAppendingFormat:@"%@+", hashtag];
         }
 
-        // 2.2.2、再添加前60个文字
+        // 2.2.2、再添加前30个文字
         NSString *noTagText = model.text;
         for (NSInteger i = results.count - 1; i >= 0; i--) {
             NSTextCheckingResult *result = results[i];
             noTagText = [noTagText stringByReplacingCharactersInRange:result.range withString:@""];
         }
-        if (noTagText.length <= 60) {
+        if (noTagText.length <= 30) {
             folderName = [folderName stringByAppendingFormat:@"%@+", noTagText];
         } else {
-            folderName = [folderName stringByAppendingFormat:@"%@+", [noTagText substringToIndex:60]];
+            folderName = [folderName stringByAppendingFormat:@"%@+", [noTagText substringToIndex:30]];
         }
     }
 
