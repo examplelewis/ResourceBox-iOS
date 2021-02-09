@@ -6,16 +6,17 @@
 //
 
 #import "RBShareImageFetchResultViewController.h"
-#import "RBShareImageFetchResultTableViewCell.h"
 
-#import <MWPhotoBrowser.h>
+#import "RBShareImageFetchResultTableViewCell.h"
+#import "RBShareImageFetchResultFilesViewController.h"
+
 #import <MJRefresh.h>
 
-@interface RBShareImageFetchResultViewController () <UITableViewDelegate, UITableViewDataSource, MWPhotoBrowserDelegate>
+@interface RBShareImageFetchResultViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *listData;
-@property (nonatomic, strong) NSMutableArray *photos;
 
 @end
 
@@ -133,26 +134,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    self.photos = [NSMutableArray array];
-    NSString *folderPath = self.listData[indexPath.row][@"folderPath"];
-    NSArray *filePaths = [RBFileManager filePathsInFolder:folderPath];
-    for (NSInteger i = 0; i < filePaths.count; i++) {
-        NSString *filePath = filePaths[i];
-        [self.photos addObject:[MWPhoto photoWithURL:[NSURL fileURLWithPath:filePath]]];
-    }
-    
-    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-    browser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
-    browser.displayNavArrows = NO; // Whether to display left and right nav arrows on toolbar (defaults to NO)
-    browser.displaySelectionButtons = NO; // Whether selection buttons are shown on each image (defaults to NO)
-    browser.zoomPhotosToFill = YES; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
-    browser.alwaysShowControls = NO; // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
-    browser.enableGrid = NO; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
-    browser.startOnGrid = NO; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
-    browser.autoPlayOnAppear = NO; // Auto-play first video
-
-    // Present
-    [self.navigationController pushViewController:browser animated:YES];
+    RBShareImageFetchResultFilesViewController *vc = [[RBShareImageFetchResultFilesViewController alloc] initWithFolderPath:self.listData[indexPath.row][@"folderPath"] andUsername:self.listData[indexPath.row][@"name"]];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle != UITableViewCellEditingStyleDelete) {
@@ -179,18 +162,6 @@
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     return @"删除";
-}
-
-#pragma mark - MWPhotoBrowserDelegate
-- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
-    return self.photos.count;
-}
-- (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
-    if (index < self.photos.count) {
-        return self.photos[index];
-    }
-    
-    return nil;
 }
 
 @end
