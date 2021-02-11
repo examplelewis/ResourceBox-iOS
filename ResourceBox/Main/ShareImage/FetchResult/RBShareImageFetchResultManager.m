@@ -15,6 +15,11 @@
     NSArray *contentPaths = [RBFileManager contentPathsInFolder:[RBFileManager shareExtensionShareImagesGroupContainerFolderPath]];
     for (NSInteger i = 0; i < contentPaths.count; i++) {
         NSString *contentPath = contentPaths[i];
+        // 文件夹名前带RBFileShareExtensionOrderedFolderNamePrefix就忽略，不允许移动
+        if ([contentPath.lastPathComponent hasPrefix:RBFileShareExtensionOrderedFolderNamePrefix]) {
+            continue;
+        }
+        
         NSString *destPath = [[RBFileManager shareExtensionShareImagesAppContainerFolderPath] stringByAppendingPathComponent:contentPath.lastPathComponent];
         [RBFileManager moveItemFromPath:contentPath toPath:destPath];
         

@@ -8,6 +8,8 @@
 
 #import "RBFileManager.h"
 
+NSString * const RBFileShareExtensionOrderedFolderNamePrefix = @"没有微博内容的未知名称";
+
 static NSString * kShareExtensionShareImagesFolderName = @"ShareImages";
 
 @implementation RBFileManager
@@ -106,6 +108,24 @@ static NSString * kShareExtensionShareImagesFolderName = @"ShareImages";
 }
 + (NSString *)shareExtensionFilePathForShareImageWithName:(NSString *)fileName {
     return [[[RBFileManager containerURL].path stringByAppendingPathComponent:kShareExtensionShareImagesFolderName] stringByAppendingPathComponent:fileName];
+}
++ (NSString *)shareExtensionOrderedFolderName {
+    NSArray *folderPaths = [RBFileManager folderPathsInFolder:[RBFileManager shareExtensionShareImagesGroupContainerFolderPath]];
+    folderPaths = [folderPaths bk_select:^BOOL(NSString *folderPath) {
+        return [folderPath.lastPathComponent hasPrefix:RBFileShareExtensionOrderedFolderNamePrefix];
+    }];
+    if (folderPaths.count == 0) {
+        return [NSString stringWithFormat:@"%@ 1", RBFileShareExtensionOrderedFolderNamePrefix];
+    } else {
+        NSArray *folderNames = [folderPaths valueForKey:@"lastPathComponent"];
+        folderNames = [folderNames bk_map:^id(NSString *folderName) {
+            NSArray *components = [folderName componentsSeparatedByString:@" "];
+            return components.count > 1 ? [components.lastObject numberValue] : @(1);
+        }];
+        
+        NSInteger max = [[folderNames valueForKeyPath:@"@max.integerValue"] integerValue];
+        return [NSString stringWithFormat:@"%@ %ld", RBFileShareExtensionOrderedFolderNamePrefix, max + 1];
+    }
 }
 
 #pragma mark - File Path

@@ -9,6 +9,7 @@
 
 #import "RBShareImageFetchResultViewController.h"
 #import "RBShareImageFetchResultManager.h"
+#import "RBShareTextModel.h"
 
 @implementation RBShareImageManager
 

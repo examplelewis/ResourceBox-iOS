@@ -9,6 +9,7 @@
 
 #import "RBShareImageFetchResultTableViewCell.h"
 #import "RBShareImageFetchResultFilesViewController.h"
+#import "RBShareImageFetchResultInputFolderNameViewController.h"
 
 #import <MJRefresh.h>
 
@@ -78,18 +79,23 @@
     for (NSInteger i = 0; i < folderPaths.count; i++) {
         NSString *folderPath = folderPaths[i];
         NSString *folderName = folderPath.lastPathComponent;
-        NSArray *folderComponents = [folderName componentsSeparatedByString:@"+"];
         
         NSString *name = @"[未知用户名]";
         NSString *text = @"[未知内容]";
         NSString *date = @"[未知时间]";
         NSString *count = [NSString stringWithFormat:@"%ld / %.2fMB", [RBFileManager filePathsInFolder:folderPath].count, [RBFileManager sizeOfFolderAtPath:folderPath] / 1024.0f / 1024.0f];
         
-        if (folderComponents.count > 0) {
-            name = folderComponents.firstObject;
-            date = folderComponents.lastObject;
-            if (folderComponents.count > 2) {
-                text = [[folderComponents subarrayWithRange:NSMakeRange(1, folderComponents.count - 2)] componentsJoinedByString:@"+"];
+        if ([folderName hasPrefix:RBFileShareExtensionOrderedFolderNamePrefix]) {
+            name = folderName;
+            date = @"19800101000000000";
+        } else {
+            NSArray *folderComponents = [folderName componentsSeparatedByString:@"+"];
+            if (folderComponents.count > 0) {
+                name = folderComponents.firstObject;
+                date = folderComponents.lastObject;
+                if (folderComponents.count > 2) {
+                    text = [[folderComponents subarrayWithRange:NSMakeRange(1, folderComponents.count - 2)] componentsJoinedByString:@"+"];
+                }
             }
         }
         
@@ -134,8 +140,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    RBShareImageFetchResultFilesViewController *vc = [[RBShareImageFetchResultFilesViewController alloc] initWithFolderPath:self.listData[indexPath.row][@"folderPath"] andUsername:self.listData[indexPath.row][@"name"]];
-    [self.navigationController pushViewController:vc animated:YES];
+    NSString *folderPath = self.listData[indexPath.row][@"folderPath"];
+    if ([folderPath.lastPathComponent hasPrefix:RBFileShareExtensionOrderedFolderNamePrefix]) {
+        RBShareImageFetchResultInputFolderNameViewController *vc = [[RBShareImageFetchResultInputFolderNameViewController alloc] initWithNibName:@"RBShareImageFetchResultInputFolderNameViewController" bundle:nil];
+        [self presentViewController:vc animated:YES completion:nil];
+    } else {
+        RBShareImageFetchResultFilesViewController *vc = [[RBShareImageFetchResultFilesViewController alloc] initWithFolderPath:folderPath andUsername:self.listData[indexPath.row][@"name"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle != UITableViewCellEditingStyleDelete) {

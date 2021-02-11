@@ -161,7 +161,7 @@ static NSInteger const maxTimerCountDown = 30;
 
 #pragma mark - Process
 - (void)processInfo {
-    NSString *folderName = [self folderNameFromWeiboText];
+    NSString *folderName = [RBShareTextModel folderNameWithText:self.text];
     NSString *folderPath = [[RBFileManager shareExtensionShareImagesGroupContainerFolderPath] stringByAppendingPathComponent:folderName];
     [RBFileManager createFolderAtPath:folderPath];
     
@@ -175,66 +175,6 @@ static NSInteger const maxTimerCountDown = 30;
     }
     
     self.imageNumsLabel.text = [NSString stringWithFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%ld 条 public.image\n\n目标文件夹: %@\n\n共移动%ld条图片至目标文件夹", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.imageFilePaths.count, folderName, [RBFileManager filePathsInFolder:folderPath].count];
-}
-- (NSString *)folderNameFromWeiboText {
-    if (!self.text.isNotEmpty) {
-        return @"[未知名称]";
-    }
-    
-    RBShareTextModel *model = [[RBShareTextModel alloc] initWithText:self.text];
-    
-    // 1、先添加用户昵称
-    NSString *folderName = [NSString stringWithFormat:@"%@+", model.userName];
-
-    // 2、添加标签以及文字
-    NSError *error;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"#[^#]+#" options:NSRegularExpressionCaseInsensitive error:&error];
-    NSArray *results = [regex matchesInString:model.text options:0 range:NSMakeRange(0, model.text.length)];
-    if (error) {
-        [[RBLogManager defaultManager] addErrorLogWithFormat:@"正则解析微博文字中的标签出错，原因：%@", error.localizedDescription];
-    }
-    if (results.count == 0) {
-        // 2.1、没有标签的话，截取前100个文字
-        if (model.text.length <= 100) {
-            folderName = [folderName stringByAppendingFormat:@"[无标签]+%@+", model.text];
-        } else {
-            folderName = [folderName stringByAppendingFormat:@"[无标签]+%@+", [model.text substringToIndex:100]];
-        }
-    } else {
-        // 2.2.1、有标签的话，先添加所有标签
-        for (NSInteger i = 0; i < results.count; i++) {
-            NSTextCheckingResult *result = results[i];
-            NSString *hashtag = [model.text substringWithRange:result.range];
-            hashtag = [hashtag stringByReplacingOccurrencesOfString:@"#" withString:@""];
-            folderName = [folderName stringByAppendingFormat:@"%@+", hashtag];
-        }
-
-        // 2.2.2、再添加前30个文字
-        NSString *noTagText = model.text;
-        for (NSInteger i = results.count - 1; i >= 0; i--) {
-            NSTextCheckingResult *result = results[i];
-            noTagText = [noTagText stringByReplacingCharactersInRange:result.range withString:@""];
-        }
-        if (noTagText.length <= 30) {
-            folderName = [folderName stringByAppendingFormat:@"%@+", noTagText];
-        } else {
-            folderName = [folderName stringByAppendingFormat:@"%@+", [noTagText substringToIndex:30]];
-        }
-    }
-
-    // 3、添加微博发布时间
-    // 根据微博内容生成文件夹的名称 时没有时间，因此把最后一个加号去掉
-    if (model.dateString.isNotEmpty) {
-        folderName = [folderName stringByAppendingFormat:@"%@", model.dateString];
-    } else {
-        folderName = [folderName substringToIndex:folderName.length - 1];
-    }
-
-    // 4、防止有 / 出现以及其他特殊字符
-    folderName = [folderName stringByReplacingOccurrencesOfString:@"/" withString:@" "];
-    folderName = [folderName stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-
-    return folderName;
 }
 
 #pragma mark - Tools
