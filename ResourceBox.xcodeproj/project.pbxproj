@@ -86,8 +86,6 @@
 		AC89B07025C9A48700BA2AA4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89B06F25C9A48700BA2AA4 /* main.m */; };
 		AC89B07A25C9A48800BA2AA4 /* ResourceBoxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89B07925C9A48800BA2AA4 /* ResourceBoxTests.m */; };
 		AC89B08525C9A48800BA2AA4 /* ResourceBoxUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89B08425C9A48800BA2AA4 /* ResourceBoxUITests.m */; };
-		ACD0A23625CAF55400DB9DA5 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD0A23525CAF55400DB9DA5 /* ShareViewController.m */; };
-		ACD0A23925CAF55400DB9DA5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD0A23725CAF55400DB9DA5 /* MainInterface.storyboard */; };
 		ACD0A23D25CAF55400DB9DA5 /* RBShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ACD0A23225CAF55400DB9DA5 /* RBShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E7136A26835BDFADF2D96D83 /* libPods-RBShareExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D0BC616DD363473A74398A /* libPods-RBShareExtension.a */; };
 /* End PBXBuildFile section */
@@ -245,9 +243,6 @@
 		AC89B08425C9A48800BA2AA4 /* ResourceBoxUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResourceBoxUITests.m; sourceTree = "<group>"; };
 		AC89B08625C9A48800BA2AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD0A23225CAF55400DB9DA5 /* RBShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RBShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACD0A23425CAF55400DB9DA5 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
-		ACD0A23525CAF55400DB9DA5 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
-		ACD0A23825CAF55400DB9DA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		ACD0A23A25CAF55400DB9DA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8C7A9CDDB30630088DE335A /* Pods-RBShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RBShareExtension.release.xcconfig"; path = "Target Support Files/Pods-RBShareExtension/Pods-RBShareExtension.release.xcconfig"; sourceTree = "<group>"; };
 		F57E1A2A00F57401B6EBB773 /* libPods-ResourceBox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ResourceBox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -596,9 +591,6 @@
 				AC6E5F9025CC4CF800D77430 /* RBShareViewController.xib */,
 				ACD0A23A25CAF55400DB9DA5 /* Info.plist */,
 				AC6E5F8925CC4A1400D77430 /* RBShareExtension.entitlements */,
-				ACD0A23425CAF55400DB9DA5 /* ShareViewController.h */,
-				ACD0A23525CAF55400DB9DA5 /* ShareViewController.m */,
-				ACD0A23725CAF55400DB9DA5 /* MainInterface.storyboard */,
 				AC38209225CEA163004ECB23 /* RBShareExtension-Prefix.pch */,
 			);
 			path = RBShareExtension;
@@ -771,7 +763,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC6E5F9225CC4CF800D77430 /* RBShareViewController.xib in Resources */,
-				ACD0A23925CAF55400DB9DA5 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,7 +945,6 @@
 				AC38209725CEA191004ECB23 /* NSString+RBAdd.m in Sources */,
 				AC38209825CEA191004ECB23 /* UIColor+RBAdd.m in Sources */,
 				AC6E5F9125CC4CF800D77430 /* RBShareViewController.m in Sources */,
-				ACD0A23625CAF55400DB9DA5 /* ShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,14 +983,6 @@
 				AC89B06C25C9A48700BA2AA4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		ACD0A23725CAF55400DB9DA5 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ACD0A23825CAF55400DB9DA5 /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
