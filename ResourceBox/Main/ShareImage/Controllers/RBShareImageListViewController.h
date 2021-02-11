@@ -1,5 +1,5 @@
 //
-//  RBShareImageFetchResultViewController.h
+//  RBShareImageListViewController.h
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/06.
@@ -16,7 +16,7 @@ typedef NS_OPTIONS(NSUInteger, RBShareImageFetchResultBehavior) {
     RBShareImageFetchResultBehaviorSourceWeibo          = 1 << 2,
 };
 
-@interface RBShareImageFetchResultViewController : UIViewController
+@interface RBShareImageListViewController : UIViewController
 
 @property (nonatomic, assign) RBShareImageFetchResultBehavior behavior;
 

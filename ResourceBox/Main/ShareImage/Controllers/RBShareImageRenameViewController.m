@@ -1,18 +1,18 @@
 //
-//  RBShareImageFetchResultInputFolderNameViewController.m
+//  RBShareImageRenameViewController.m
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/10.
 //
 
-#import "RBShareImageFetchResultInputFolderNameViewController.h"
+#import "RBShareImageRenameViewController.h"
 
 #import "RBShareImageManager.h"
 #import "RBShareTextModel.h"
 
 static NSString * const RBDefaultFolderName = @"---没有输入内容---";
 
-@interface RBShareImageFetchResultInputFolderNameViewController () <UITextViewDelegate>
+@interface RBShareImageRenameViewController () <UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UILabel *label;
@@ -22,7 +22,7 @@ static NSString * const RBDefaultFolderName = @"---没有输入内容---";
 
 @end
 
-@implementation RBShareImageFetchResultInputFolderNameViewController
+@implementation RBShareImageRenameViewController
 
 #pragma mark - Lifecycle
 - (void)viewDidLoad {

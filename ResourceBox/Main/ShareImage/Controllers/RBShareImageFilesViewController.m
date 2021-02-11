@@ -1,15 +1,15 @@
 //
-//  RBShareImageFetchResultFilesViewController.m
+//  RBShareImageFilesViewController.m
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/09.
 //
 
-#import "RBShareImageFetchResultFilesViewController.h"
+#import "RBShareImageFilesViewController.h"
 
 #import <MWPhotoBrowser.h>
 
-@interface RBShareImageFetchResultFilesViewController () <UITableViewDelegate, UITableViewDataSource, MWPhotoBrowserDelegate>
+@interface RBShareImageFilesViewController () <UITableViewDelegate, UITableViewDataSource, MWPhotoBrowserDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation RBShareImageFetchResultFilesViewController
+@implementation RBShareImageFilesViewController
 
 #pragma mark - Lifecycle
 - (instancetype)initWithFolderPath:(NSString *)folderPath andUsername:(nonnull NSString *)username {

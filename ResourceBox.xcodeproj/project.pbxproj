@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		1595B8BB8DCD2762129F94A3 /* libPods-ResourceBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F57E1A2A00F57401B6EBB773 /* libPods-ResourceBox.a */; };
 		AC10126C25D5B46600DC55E7 /* RBShareTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3820DD25CEBC4E004ECB23 /* RBShareTextModel.m */; };
-		AC24B05E25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC24B05C25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.m */; };
-		AC24B05F25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC24B05D25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.xib */; };
-		AC33359F25D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC33359D25D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.m */; };
-		AC3335A025D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC33359E25D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.xib */; };
+		AC24B05E25D2E006009180B0 /* RBShareImageFilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC24B05C25D2E006009180B0 /* RBShareImageFilesViewController.m */; };
+		AC24B05F25D2E006009180B0 /* RBShareImageFilesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC24B05D25D2E006009180B0 /* RBShareImageFilesViewController.xib */; };
+		AC33359F25D40C6F0009DF4D /* RBShareImageRenameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC33359D25D40C6F0009DF4D /* RBShareImageRenameViewController.m */; };
+		AC3335A025D40C6F0009DF4D /* RBShareImageRenameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC33359E25D40C6F0009DF4D /* RBShareImageRenameViewController.xib */; };
 		AC3335A525D416C10009DF4D /* RBShareTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3820DD25CEBC4E004ECB23 /* RBShareTextModel.m */; };
 		AC38209325CEA191004ECB23 /* NSArray+RBAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5EC725CC32FF00D77430 /* NSArray+RBAdd.m */; };
 		AC38209425CEA191004ECB23 /* NSDictionary+RBAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5ECC25CC32FF00D77430 /* NSDictionary+RBAdd.m */; };
@@ -44,9 +44,8 @@
 		AC38216925CEEDE8004ECB23 /* RBShareImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38215E25CEEDE8004ECB23 /* RBShareImageManager.m */; };
 		AC38216A25CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38216125CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m */; };
 		AC38216B25CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC38216225CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib */; };
-		AC38216C25CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC38216625CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib */; };
-		AC38216D25CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38216725CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m */; };
-		AC38216E25CEEDE8004ECB23 /* RBShareImageFetchResultManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38216825CEEDE8004ECB23 /* RBShareImageFetchResultManager.m */; };
+		AC38216C25CEEDE8004ECB23 /* RBShareImageListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC38216625CEEDE8004ECB23 /* RBShareImageListViewController.xib */; };
+		AC38216D25CEEDE8004ECB23 /* RBShareImageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC38216725CEEDE8004ECB23 /* RBShareImageListViewController.m */; };
 		AC6E5ED025CC32FF00D77430 /* RBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9525CC32FF00D77430 /* RBFileManager.m */; };
 		AC6E5ED125CC32FF00D77430 /* RBUtilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9725CC32FF00D77430 /* RBUtilityManager.m */; };
 		AC6E5ED325CC32FF00D77430 /* RBExceptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5E9E25CC32FF00D77430 /* RBExceptionManager.m */; };
@@ -133,12 +132,12 @@
 		58913FA3D7E31C8C4431D386 /* Pods-RBShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RBShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-RBShareExtension/Pods-RBShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		58E18A5CB512625D10CA9A44 /* Pods-ResourceBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResourceBox.debug.xcconfig"; path = "Target Support Files/Pods-ResourceBox/Pods-ResourceBox.debug.xcconfig"; sourceTree = "<group>"; };
 		69D0BC616DD363473A74398A /* libPods-RBShareExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RBShareExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC24B05B25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBShareImageFetchResultFilesViewController.h; sourceTree = "<group>"; };
-		AC24B05C25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBShareImageFetchResultFilesViewController.m; sourceTree = "<group>"; };
-		AC24B05D25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RBShareImageFetchResultFilesViewController.xib; sourceTree = "<group>"; };
-		AC33359C25D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBShareImageFetchResultInputFolderNameViewController.h; sourceTree = "<group>"; };
-		AC33359D25D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBShareImageFetchResultInputFolderNameViewController.m; sourceTree = "<group>"; };
-		AC33359E25D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RBShareImageFetchResultInputFolderNameViewController.xib; sourceTree = "<group>"; };
+		AC24B05B25D2E006009180B0 /* RBShareImageFilesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBShareImageFilesViewController.h; sourceTree = "<group>"; };
+		AC24B05C25D2E006009180B0 /* RBShareImageFilesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBShareImageFilesViewController.m; sourceTree = "<group>"; };
+		AC24B05D25D2E006009180B0 /* RBShareImageFilesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RBShareImageFilesViewController.xib; sourceTree = "<group>"; };
+		AC33359C25D40C6F0009DF4D /* RBShareImageRenameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBShareImageRenameViewController.h; sourceTree = "<group>"; };
+		AC33359D25D40C6F0009DF4D /* RBShareImageRenameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBShareImageRenameViewController.m; sourceTree = "<group>"; };
+		AC33359E25D40C6F0009DF4D /* RBShareImageRenameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RBShareImageRenameViewController.xib; sourceTree = "<group>"; };
 		AC38209225CEA163004ECB23 /* RBShareExtension-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RBShareExtension-Prefix.pch"; sourceTree = "<group>"; };
 		AC3820DC25CEBC4E004ECB23 /* RBShareTextModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBShareTextModel.h; sourceTree = "<group>"; };
 		AC3820DD25CEBC4E004ECB23 /* RBShareTextModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBShareTextModel.m; sourceTree = "<group>"; };
@@ -146,12 +145,10 @@
 		AC38215F25CEEDE8004ECB23 /* RBShareImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBShareImageManager.h; sourceTree = "<group>"; };
 		AC38216125CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBShareImageFetchResultTableViewCell.m; sourceTree = "<group>"; };
 		AC38216225CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RBShareImageFetchResultTableViewCell.xib; sourceTree = "<group>"; };
-		AC38216325CEEDE8004ECB23 /* RBShareImageFetchResultManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBShareImageFetchResultManager.h; sourceTree = "<group>"; };
-		AC38216425CEEDE8004ECB23 /* RBShareImageFetchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBShareImageFetchResultViewController.h; sourceTree = "<group>"; };
+		AC38216425CEEDE8004ECB23 /* RBShareImageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBShareImageListViewController.h; sourceTree = "<group>"; };
 		AC38216525CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBShareImageFetchResultTableViewCell.h; sourceTree = "<group>"; };
-		AC38216625CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RBShareImageFetchResultViewController.xib; sourceTree = "<group>"; };
-		AC38216725CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBShareImageFetchResultViewController.m; sourceTree = "<group>"; };
-		AC38216825CEEDE8004ECB23 /* RBShareImageFetchResultManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBShareImageFetchResultManager.m; sourceTree = "<group>"; };
+		AC38216625CEEDE8004ECB23 /* RBShareImageListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RBShareImageListViewController.xib; sourceTree = "<group>"; };
+		AC38216725CEEDE8004ECB23 /* RBShareImageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBShareImageListViewController.m; sourceTree = "<group>"; };
 		AC6E5E9525CC32FF00D77430 /* RBFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBFileManager.m; sourceTree = "<group>"; };
 		AC6E5E9625CC32FF00D77430 /* RBExceptionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBExceptionManager.h; sourceTree = "<group>"; };
 		AC6E5E9725CC32FF00D77430 /* RBUtilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBUtilityManager.m; sourceTree = "<group>"; };
@@ -302,36 +299,42 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		AC10127D25D5B5DE00DC55E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC38216525CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.h */,
+				AC38216125CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m */,
+				AC38216225CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		AC38215D25CEEDE8004ECB23 /* ShareImage */ = {
 			isa = PBXGroup;
 			children = (
 				AC38215F25CEEDE8004ECB23 /* RBShareImageManager.h */,
 				AC38215E25CEEDE8004ECB23 /* RBShareImageManager.m */,
-				AC38216025CEEDE8004ECB23 /* FetchResult */,
 				AC10123525D5B2A900DC55E7 /* Models */,
+				AC38216025CEEDE8004ECB23 /* Controllers */,
+				AC10127D25D5B5DE00DC55E7 /* Views */,
 			);
 			path = ShareImage;
 			sourceTree = "<group>";
 		};
-		AC38216025CEEDE8004ECB23 /* FetchResult */ = {
+		AC38216025CEEDE8004ECB23 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AC38216325CEEDE8004ECB23 /* RBShareImageFetchResultManager.h */,
-				AC38216825CEEDE8004ECB23 /* RBShareImageFetchResultManager.m */,
-				AC38216425CEEDE8004ECB23 /* RBShareImageFetchResultViewController.h */,
-				AC38216725CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m */,
-				AC38216625CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib */,
-				AC24B05B25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.h */,
-				AC24B05C25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.m */,
-				AC24B05D25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.xib */,
-				AC38216525CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.h */,
-				AC38216125CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m */,
-				AC38216225CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib */,
-				AC33359C25D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.h */,
-				AC33359D25D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.m */,
-				AC33359E25D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.xib */,
+				AC38216425CEEDE8004ECB23 /* RBShareImageListViewController.h */,
+				AC38216725CEEDE8004ECB23 /* RBShareImageListViewController.m */,
+				AC38216625CEEDE8004ECB23 /* RBShareImageListViewController.xib */,
+				AC24B05B25D2E006009180B0 /* RBShareImageFilesViewController.h */,
+				AC24B05C25D2E006009180B0 /* RBShareImageFilesViewController.m */,
+				AC24B05D25D2E006009180B0 /* RBShareImageFilesViewController.xib */,
+				AC33359C25D40C6F0009DF4D /* RBShareImageRenameViewController.h */,
+				AC33359D25D40C6F0009DF4D /* RBShareImageRenameViewController.m */,
+				AC33359E25D40C6F0009DF4D /* RBShareImageRenameViewController.xib */,
 			);
-			path = FetchResult;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		AC6E5E9225CC32FF00D77430 /* Universal */ = {
@@ -735,12 +738,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC89B06D25C9A48700BA2AA4 /* LaunchScreen.storyboard in Resources */,
-				AC38216C25CEEDE8004ECB23 /* RBShareImageFetchResultViewController.xib in Resources */,
+				AC38216C25CEEDE8004ECB23 /* RBShareImageListViewController.xib in Resources */,
 				AC89B06A25C9A48700BA2AA4 /* Assets.xcassets in Resources */,
 				AC89B06825C9A48500BA2AA4 /* Main.storyboard in Resources */,
-				AC24B05F25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.xib in Resources */,
+				AC24B05F25D2E006009180B0 /* RBShareImageFilesViewController.xib in Resources */,
 				AC38216B25CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.xib in Resources */,
-				AC3335A025D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.xib in Resources */,
+				AC3335A025D40C6F0009DF4D /* RBShareImageRenameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,7 +858,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC3335A525D416C10009DF4D /* RBShareTextModel.m in Sources */,
-				AC24B05E25D2E006009180B0 /* RBShareImageFetchResultFilesViewController.m in Sources */,
+				AC24B05E25D2E006009180B0 /* RBShareImageFilesViewController.m in Sources */,
 				AC6E5EDE25CC32FF00D77430 /* RBSettingManager.m in Sources */,
 				AC6E5ED125CC32FF00D77430 /* RBUtilityManager.m in Sources */,
 				AC6E5F3925CC351B00D77430 /* NSKeyedUnarchiver+YYAdd.m in Sources */,
@@ -875,10 +878,9 @@
 				AC38216925CEEDE8004ECB23 /* RBShareImageManager.m in Sources */,
 				AC6E5EE025CC32FF00D77430 /* RBSQLiteSettingManager.m in Sources */,
 				AC89B07025C9A48700BA2AA4 /* main.m in Sources */,
-				AC38216D25CEEDE8004ECB23 /* RBShareImageFetchResultViewController.m in Sources */,
+				AC38216D25CEEDE8004ECB23 /* RBShareImageListViewController.m in Sources */,
 				AC6E5EED25CC334600D77430 /* UIColor+RBAdd.m in Sources */,
 				AC6E5EE525CC32FF00D77430 /* NSDictionary+RBAdd.m in Sources */,
-				AC38216E25CEEDE8004ECB23 /* RBShareImageFetchResultManager.m in Sources */,
 				AC38216A25CEEDE8004ECB23 /* RBShareImageFetchResultTableViewCell.m in Sources */,
 				AC6E5ED325CC32FF00D77430 /* RBExceptionManager.m in Sources */,
 				AC6E5F3525CC351B00D77430 /* NSBundle+YYAdd.m in Sources */,
@@ -889,7 +891,7 @@
 				AC6E5F3C25CC351B00D77430 /* NSDate+YYAdd.m in Sources */,
 				AC6E5F3625CC351B00D77430 /* NSObject+YYAdd.m in Sources */,
 				AC6E5F3325CC351B00D77430 /* NSArray+YYAdd.m in Sources */,
-				AC33359F25D40C6F0009DF4D /* RBShareImageFetchResultInputFolderNameViewController.m in Sources */,
+				AC33359F25D40C6F0009DF4D /* RBShareImageRenameViewController.m in Sources */,
 				AC6E5F3F25CC351B00D77430 /* NSDictionary+YYAdd.m in Sources */,
 				AC6E5ED025CC32FF00D77430 /* RBFileManager.m in Sources */,
 				AC6E5EDF25CC32FF00D77430 /* RBLogManager.m in Sources */,

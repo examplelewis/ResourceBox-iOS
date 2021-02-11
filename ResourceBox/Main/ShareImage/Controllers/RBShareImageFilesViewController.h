@@ -1,5 +1,5 @@
 //
-//  RBShareImageFetchResultFilesViewController.h
+//  RBShareImageFilesViewController.h
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/09.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RBShareImageFetchResultFilesViewController : UIViewController
+@interface RBShareImageFilesViewController : UIViewController
 
 - (instancetype)initWithFolderPath:(NSString *)folderPath andUsername:(NSString *)username;
 

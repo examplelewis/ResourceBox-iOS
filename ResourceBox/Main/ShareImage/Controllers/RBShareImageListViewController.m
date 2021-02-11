@@ -1,19 +1,19 @@
 //
-//  RBShareImageFetchResultViewController.m
+//  RBShareImageListViewController.m
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/06.
 //
 
-#import "RBShareImageFetchResultViewController.h"
+#import "RBShareImageListViewController.h"
 
 #import "RBShareImageFetchResultTableViewCell.h"
-#import "RBShareImageFetchResultFilesViewController.h"
-#import "RBShareImageFetchResultInputFolderNameViewController.h"
+#import "RBShareImageFilesViewController.h"
+#import "RBShareImageRenameViewController.h"
 
 #import <MJRefresh.h>
 
-@interface RBShareImageFetchResultViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface RBShareImageListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation RBShareImageFetchResultViewController
+@implementation RBShareImageListViewController
 
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
@@ -142,10 +142,10 @@
     
     NSString *folderPath = self.listData[indexPath.row][@"folderPath"];
     if ([folderPath.lastPathComponent hasPrefix:RBFileShareExtensionOrderedFolderNamePrefix]) {
-        RBShareImageFetchResultInputFolderNameViewController *vc = [[RBShareImageFetchResultInputFolderNameViewController alloc] initWithNibName:@"RBShareImageFetchResultInputFolderNameViewController" bundle:nil];
+        RBShareImageRenameViewController *vc = [[RBShareImageRenameViewController alloc] initWithNibName:@"RBShareImageRenameViewController" bundle:nil];
         [self presentViewController:vc animated:YES completion:nil];
     } else {
-        RBShareImageFetchResultFilesViewController *vc = [[RBShareImageFetchResultFilesViewController alloc] initWithFolderPath:folderPath andUsername:self.listData[indexPath.row][@"name"]];
+        RBShareImageFilesViewController *vc = [[RBShareImageFilesViewController alloc] initWithFolderPath:folderPath andUsername:self.listData[indexPath.row][@"name"]];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
