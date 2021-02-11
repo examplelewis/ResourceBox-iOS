@@ -10,8 +10,6 @@
 #import "RBShareImageManager.h"
 #import "RBShareTextModel.h"
 
-static NSString * const RBDefaultFolderName = @"---没有输入内容---";
-
 @interface RBShareImageRenameViewController () <UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextView *textView;
@@ -53,10 +51,24 @@ static NSString * const RBDefaultFolderName = @"---没有输入内容---";
     [self generate];
 }
 - (IBAction)confirmButtonDidPress:(UIButton *)sender {
-    if ([self.output isEqualToString:RBDefaultFolderName]) {
-        [self.view makeToast:@"输入内容有误" duration:1.5f position:CSToastPositionCenter];
+    if ([self.output isEqualToString:@""]) {
+        [self.view makeToast:@"输入内容有变更，请点击结果按钮" duration:1.5f position:CSToastPositionCenter];
         return;
     }
+    
+    if ([self.delegate respondsToSelector:@selector(didConfirmNewFolderName:index:)]) {
+        [self.delegate didConfirmNewFolderName:[self.output copy] index:self.index];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+#pragma mark - UITextViewDelegate
+- (void)textViewDidChange:(UITextView *)textView { // 在该代理方法中实现实时监听uitextview的输入
+    self.input = textView.text;
+    
+    self.output = @"";
+    self.label.text = @"输入内容有变更，请点击结果按钮";
+
 }
 
 @end

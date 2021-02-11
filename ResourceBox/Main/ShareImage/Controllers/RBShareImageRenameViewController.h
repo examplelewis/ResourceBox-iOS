@@ -9,7 +9,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol RBShareImageRenameDelegate <NSObject>
+
+- (void)didConfirmNewFolderName:(NSString *)newFolderName index:(NSInteger)index;
+
+@end
+
 @interface RBShareImageRenameViewController : UIViewController
+
+@property (nonatomic, assign) NSInteger index;
+@property (nonatomic, weak) id<RBShareImageRenameDelegate> delegate;
 
 @end
 

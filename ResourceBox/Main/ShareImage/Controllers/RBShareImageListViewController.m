@@ -13,7 +13,7 @@
 
 #import <MJRefresh.h>
 
-@interface RBShareImageListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface RBShareImageListViewController () <UITableViewDelegate, UITableViewDataSource, RBShareImageRenameDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -113,6 +113,28 @@
     });
 }
 
+#pragma mark - RBShareImageRenameDelegate
+- (void)didConfirmNewFolderName:(NSString *)newFolderName index:(NSInteger)index {
+    NSDictionary *data = self.listData[index];
+    NSString *oldFolderPath = data[@"folderPath"];
+    NSString *newFolderPath = [oldFolderPath.stringByDeletingLastPathComponent stringByAppendingPathComponent:newFolderName];
+    
+    NSMutableDictionary *newData = [NSMutableDictionary dictionaryWithDictionary:data];
+    newData[@"folderPath"] = newFolderPath;
+    NSArray *folderComponents = [newFolderName componentsSeparatedByString:@"+"];
+    if (folderComponents.count > 0) {
+        newData[@"name"] = folderComponents.firstObject;
+        newData[@"date"] = folderComponents.lastObject;
+        if (folderComponents.count > 2) {
+            newData[@"text"] = [[folderComponents subarrayWithRange:NSMakeRange(1, folderComponents.count - 2)] componentsJoinedByString:@"+"];
+        }
+    }
+    self.listData[index] = [newData copy];
+    [self.tableView reloadData];
+    
+    [RBFileManager moveItemFromPath:oldFolderPath toPath:newFolderPath];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.listData.count;
@@ -143,6 +165,9 @@
     NSString *folderPath = self.listData[indexPath.row][@"folderPath"];
     if ([folderPath.lastPathComponent hasPrefix:RBFileShareExtensionOrderedFolderNamePrefix]) {
         RBShareImageRenameViewController *vc = [[RBShareImageRenameViewController alloc] initWithNibName:@"RBShareImageRenameViewController" bundle:nil];
+        vc.index = indexPath.row;
+        vc.delegate = self;
+        
         [self presentViewController:vc animated:YES completion:nil];
     } else {
         RBShareImageFilesViewController *vc = [[RBShareImageFilesViewController alloc] initWithFolderPath:folderPath andUsername:self.listData[indexPath.row][@"name"]];
