@@ -1,13 +1,13 @@
 //
-//  RBShareImageFetchResultTableViewCell.m
+//  RBShareImageListTableViewCell.m
 //  ResourceBox
 //
 //  Created by 龚宇 on 21/02/06.
 //
 
-#import "RBShareImageFetchResultTableViewCell.h"
+#import "RBShareImageListTableViewCell.h"
 
-@implementation RBShareImageFetchResultTableViewCell
+@implementation RBShareImageListTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

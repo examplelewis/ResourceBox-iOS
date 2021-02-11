@@ -7,7 +7,7 @@
 
 #import "RBShareImageListViewController.h"
 
-#import "RBShareImageFetchResultTableViewCell.h"
+#import "RBShareImageListTableViewCell.h"
 #import "RBShareImageFilesViewController.h"
 #import "RBShareImageRenameViewController.h"
 
@@ -38,7 +38,7 @@
     self.listData = [NSMutableArray array];
     
     // UI
-    [self.tableView registerNib:[UINib nibWithNibName:@"RBShareImageFetchResultTableViewCell" bundle:nil] forCellReuseIdentifier:@"RBShareImageFetchResult"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RBShareImageListTableViewCell" bundle:nil] forCellReuseIdentifier:@"RBShareImageFetchResult"];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 176;
     self.tableView.tableFooterView = [UIView new];
@@ -119,7 +119,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *data = self.listData[indexPath.row];
-    RBShareImageFetchResultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RBShareImageFetchResult"];
+    RBShareImageListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RBShareImageFetchResult"];
     cell.nameLabel.text = [NSString stringWithFormat:@"\t%@", data[@"name"]];
     cell.statusLabel.text = [NSString stringWithFormat:@"\t%@", data[@"text"]];
     cell.timeLabel.text = [NSString stringWithFormat:@"\t%@", [[NSDate dateWithString:data[@"date"] format:RBTimeFormatyMdHmsSCompact] stringWithFormat:RBTimeFormatyMdHmsS]];
