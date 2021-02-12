@@ -156,6 +156,7 @@
     cell.statusLabel.text = [NSString stringWithFormat:@"\t%@", data[@"text"]];
     cell.timeLabel.text = [NSString stringWithFormat:@"\t%@", [[NSDate dateWithString:data[@"date"] format:RBTimeFormatyMdHmsSCompact] stringWithFormat:RBTimeFormatyMdHmsS]];
     cell.countLabel.text = [NSString stringWithFormat:@"\t%@", data[@"count"]];
+    cell.contentView.backgroundColor = indexPath.row % 2 == 0 ? [UIColor whiteColor] : [UIColor colorWithHexString:@"F5F5F5"];
     
     return cell;
 }

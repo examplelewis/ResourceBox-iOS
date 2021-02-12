@@ -137,6 +137,7 @@
     NSDictionary *data = self.listData[indexPath.row];
     cell.textLabel.text = data[@"name"];
     cell.detailTextLabel.text = data[@"size"];
+    cell.contentView.backgroundColor = indexPath.row % 2 == 0 ? [UIColor whiteColor] : [UIColor colorWithHexString:@"F5F5F5"];
     
     return cell;
 }
