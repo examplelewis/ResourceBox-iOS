@@ -81,7 +81,9 @@
     for (NSInteger i = 0; i < folderPaths.count; i++) {
         NSString *filePath = folderPaths[i];
         NSString *name = filePath.lastPathComponent;
-        NSString *size = [NSString stringWithFormat:@"%.2fMB", [[RBFileManager attribute:NSFileSize ofItemAtPath:filePath] longLongValue] / 1024.0f / 1024.0f];
+        
+        float fileSizeInKB = [[RBFileManager attribute:NSFileSize ofItemAtPath:filePath] longLongValue] / 1024.0f;
+        NSString *size = fileSizeInKB > 1024.0f ? [NSString stringWithFormat:@"%.2f MB", fileSizeInKB / 1024.0f] : [NSString stringWithFormat:@"%.2f KB", fileSizeInKB];
         
         [self.listData addObject:NSDictionaryOfVariableBindings(name, size)];
     }
