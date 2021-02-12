@@ -30,6 +30,11 @@
     [self setupUIAndData];
     
     [self.tableView.mj_header beginRefreshing];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Configure
@@ -87,7 +92,7 @@
         
         if ([folderName hasPrefix:RBFileShareExtensionOrderedFolderNamePrefix]) {
             name = folderName;
-            date = @"19800101000000000";
+            date = [[NSDate date] stringWithFormat:RBTimeFormatyMdHmsSCompact];
         } else {
             NSArray *folderComponents = [folderName componentsSeparatedByString:@"+"];
             if (folderComponents.count > 0) {
@@ -111,6 +116,11 @@
         [self.tableView.mj_header endRefreshing];
         [self.tableView reloadData];
     });
+}
+
+#pragma mark - Notification
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    [self.tableView.mj_header beginRefreshing];
 }
 
 #pragma mark - RBShareImageRenameDelegate
