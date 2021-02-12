@@ -25,9 +25,7 @@ static NSInteger const maxTimerCountDown = 30;
 
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
 
-@property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UITextView *statusTextView;
-@property (strong, nonatomic) IBOutlet UILabel *imageNumsLabel;
 
 @property (strong, nonatomic) IBOutlet UIView *waitingView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
@@ -59,7 +57,7 @@ static NSInteger const maxTimerCountDown = 30;
 #pragma mark - Configure
 - (void)setupUIAndData {
     // UI
-    self.contentView.hidden = YES;
+    self.statusTextView.hidden = YES;
     self.waitingView.hidden = NO;
     
     // Data
@@ -153,10 +151,7 @@ static NSInteger const maxTimerCountDown = 30;
     
     [self.indicator stopAnimating];
     self.waitingView.hidden = YES;
-    self.contentView.hidden = NO;
-    
-    self.statusTextView.text = self.text;
-    self.imageNumsLabel.text = [NSString stringWithFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%ld 条 public.image", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.imageFilePaths.count];
+    self.statusTextView.hidden = NO;
 }
 
 #pragma mark - Process
@@ -165,16 +160,28 @@ static NSInteger const maxTimerCountDown = 30;
     NSString *folderPath = [[RBFileManager shareExtensionShareImagesGroupContainerFolderPath] stringByAppendingPathComponent:folderName];
     [RBFileManager createFolderAtPath:folderPath];
     
+    NSString *fileContents = @"";
     for (NSInteger i = 0; i < self.imageFilePaths.count; i++) {
         NSString *originPath = self.imageFilePaths[i];
         NSString *destPath = [folderPath stringByAppendingPathComponent:originPath.lastPathComponent];
-        [RBFileManager moveItemFromPath:originPath toPath:destPath];
         
+        [RBFileManager moveItemFromPath:originPath toPath:destPath];
         [[RBLogManager defaultManager] addDefaultLogWithFormat:@"移动前: %@", originPath];
         [[RBLogManager defaultManager] addDefaultLogWithFormat:@"移动后: %@", destPath];
+        
+        fileContents = [fileContents stringByAppendingFormat:@"%@\t\t%@%@", destPath.lastPathComponent, [RBFileManager fileSizeDescriptionAtPath:destPath], i == self.imageFilePaths.count - 1 ? @"" : @"\n"];
     }
     
-    self.imageNumsLabel.text = [NSString stringWithFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%ld 条 public.image\n\n目标文件夹: %@\n\n共移动%ld条图片至目标文件夹", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.imageFilePaths.count, folderName, [RBFileManager filePathsInFolder:folderPath].count];
+    // 微博内容
+    NSString *outputString = [NSString stringWithFormat:@"微博内容:\n\t%@\n\n", self.text];
+    // Share Extension
+    outputString = [outputString stringByAppendingFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%ld 条 public.image\n\n", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.imageFilePaths.count];
+    // 文件具体内容
+    outputString = [outputString stringByAppendingFormat:@"%@\n\n", fileContents];
+    // 文件夹以及目的地内容
+    outputString = [outputString stringByAppendingFormat:@"目标文件夹: %@\n共移动 %ld 条图片至目标文件夹\n目标文件夹大小: %@", folderName, [RBFileManager filePathsInFolder:folderPath].count, [RBFileManager folderSizeDescriptionAtPath:folderPath]];
+    
+    self.statusTextView.text = outputString;
 }
 
 #pragma mark - Tools

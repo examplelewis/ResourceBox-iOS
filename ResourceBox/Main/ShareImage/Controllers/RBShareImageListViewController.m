@@ -88,7 +88,7 @@
         NSString *name = @"[未知用户名]";
         NSString *text = @"[未知内容]";
         NSString *date = @"[未知时间]";
-        NSString *count = [NSString stringWithFormat:@"%ld / %.2fMB", [RBFileManager filePathsInFolder:folderPath].count, [RBFileManager sizeOfFolderAtPath:folderPath] / 1024.0f / 1024.0f];
+        NSString *count = [NSString stringWithFormat:@"%ld / %.2fMB", [RBFileManager filePathsInFolder:folderPath].count, [RBFileManager folderSizeAtPath:folderPath] / 1024.0f / 1024.0f];
         
         if ([folderName hasPrefix:RBFileShareExtensionOrderedFolderNamePrefix]) {
             name = folderName;

@@ -85,17 +85,6 @@ static NSString * kShareExtensionShareImagesFolderName = @"ShareImages";
     }
 }
 
-#pragma mark - Size
-+ (unsigned long long int)sizeOfFolderAtPath:(NSString *)folderPath {
-    unsigned long long int fileSize = 0;
-    NSArray *filePaths = [RBFileManager allFilePathsInFolder:folderPath];
-    for (NSString *filePath in filePaths) {
-        fileSize += [[RBFileManager attribute:NSFileSize ofItemAtPath:filePath] longLongValue];
-    }
-
-    return fileSize;
-}
-
 #pragma mark - RBShareExtension
 + (NSURL *)containerURL {
     return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.gongyuTest.ResourceBox"];
@@ -318,6 +307,39 @@ static NSString * kShareExtensionShareImagesFolderName = @"ShareImages";
 }
 + (id)attribute:(NSString *)attribute ofItemAtPath:(NSString *)path {
     return [self allAttributesOfItemAtPath:path][attribute];
+}
++ (unsigned long long)fileSizeAtPath:(NSString *)path {
+    return [[RBFileManager attribute:NSFileSize ofItemAtPath:path] unsignedLongLongValue];
+}
++ (unsigned long long)folderSizeAtPath:(NSString *)path {
+    unsigned long long fileSize = 0;
+    NSArray *filePaths = [RBFileManager allFilePathsInFolder:path];
+    for (NSString *filePath in filePaths) {
+        fileSize += [RBFileManager fileSizeAtPath:filePath];
+    }
+
+    return fileSize;
+}
++ (NSString *)fileSizeDescriptionAtPath:(NSString *)path {
+    return [RBFileManager sizeDescriptionFromSize:[RBFileManager fileSizeAtPath:path]];
+}
++ (NSString *)folderSizeDescriptionAtPath:(NSString *)path {
+    return [RBFileManager sizeDescriptionFromSize:[RBFileManager folderSizeAtPath:path]];
+}
++ (NSString *)sizeDescriptionFromSize:(unsigned long long)size {
+    if (size < 1024.0f) {
+        return [NSString stringWithFormat:@"%lld B", size];
+    }
+    
+    if (size / 1024.0f < 1024.0f) {
+        return [NSString stringWithFormat:@"%.2f KB", size / 1024.0f];
+    }
+    
+    if (size / 1024.0f / 1024.0f < 1024.0f) {
+        return [NSString stringWithFormat:@"%.2f MB", size / 1024.0f / 1024.0f];
+    }
+    
+    return [NSString stringWithFormat:@"%.2f GB", size / 1024.0f / 1024.0f / 1024.0f];
 }
 
 #pragma mark - Check

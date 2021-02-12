@@ -33,9 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)removeFilePath:(NSString *)filePath;
 + (BOOL)removeFileURL:(NSURL *)fileURL;
 
-#pragma mark - Size
-+ (unsigned long long int)sizeOfFolderAtPath:(NSString *)folderPath;
-
 #pragma mark - RBShareExtension
 + (NSString *)shareExtensionShareImagesAppContainerFolderPath;
 + (NSString *)shareExtensionShareImagesGroupContainerFolderPath;
@@ -58,6 +55,11 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Attributes
 + (NSDictionary *)allAttributesOfItemAtPath:(NSString *)path;
 + (id)attribute:(NSString *)attribute ofItemAtPath:(NSString *)path;
++ (unsigned long long)fileSizeAtPath:(NSString *)path;
++ (unsigned long long)folderSizeAtPath:(NSString *)path;
++ (NSString *)fileSizeDescriptionAtPath:(NSString *)path;
++ (NSString *)folderSizeDescriptionAtPath:(NSString *)path;
++ (NSString *)sizeDescriptionFromSize:(unsigned long long)size;
 
 #pragma mark - Check
 + (BOOL)fileExistsAtPath:(NSString *)contentPath;
