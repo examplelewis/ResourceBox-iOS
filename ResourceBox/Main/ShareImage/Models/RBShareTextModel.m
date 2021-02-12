@@ -82,6 +82,8 @@
             NSTextCheckingResult *result = results[i];
             noTagText = [noTagText stringByReplacingCharactersInRange:result.range withString:@""];
         }
+        noTagText = noTagText.removeEmoji; // 去除Emoji
+        
         if (noTagText.length <= 30) {
             folderName = [folderName stringByAppendingFormat:@"%@+", noTagText];
         } else {

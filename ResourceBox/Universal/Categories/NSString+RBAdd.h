@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)md5Middle;
 - (NSString *)md5Middle8;
 
+- (NSString *)removeEmoji;
+
 #pragma mark - Export
 - (void)exportToPath:(NSString *)path;
 - (void)exportToPath:(NSString *)path behavior:(RBFileOpertaionBehavior)behavior;
