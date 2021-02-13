@@ -173,11 +173,14 @@ static NSInteger const maxTimerCountDown = 30;
     }
     
     // 微博内容
-    NSString *outputString = [NSString stringWithFormat:@"微博内容:\n\t%@\n\n", self.text];
+    NSString *outputString = [NSString stringWithFormat:@"微博内容:\n\t%@\n", self.text];
+    outputString = [outputString stringByAppendingString:@"------------------------------------------------------------\n"];
     // Share Extension
-    outputString = [outputString stringByAppendingFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%ld 条 public.image\n\n", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.imageFilePaths.count];
+    outputString = [outputString stringByAppendingFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%ld 条 public.image\n", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.imageFilePaths.count];
+    outputString = [outputString stringByAppendingString:@"------------------------------------------------------------\n"];
     // 文件具体内容
-    outputString = [outputString stringByAppendingFormat:@"%@\n\n", fileContents];
+    outputString = [outputString stringByAppendingFormat:@"%@\n", fileContents];
+    outputString = [outputString stringByAppendingString:@"------------------------------------------------------------\n"];
     // 文件夹以及目的地内容
     outputString = [outputString stringByAppendingFormat:@"目标文件夹: %@\n共移动 %ld 条图片至目标文件夹\n目标文件夹大小: %@", folderName, [RBFileManager filePathsInFolder:folderPath].count, [RBFileManager folderSizeDescriptionAtPath:folderPath]];
     
