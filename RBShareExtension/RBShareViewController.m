@@ -24,12 +24,15 @@ static NSInteger const maxTimerCountDown = 30;
 @property (nonatomic, assign) NSInteger countDown;
 
 @property (strong, nonatomic) IBOutlet UIButton *closeButton;
+@property (strong, nonatomic) IBOutlet UIButton *undoButton;
 
 @property (strong, nonatomic) IBOutlet UITextView *statusTextView;
 
 @property (strong, nonatomic) IBOutlet UIView *waitingView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (strong, nonatomic) IBOutlet UILabel *waitingLabel;
+
+@property (nonatomic, copy) NSString *destFolderPath;
 
 @end
 
@@ -156,14 +159,19 @@ static NSInteger const maxTimerCountDown = 30;
 
 #pragma mark - Process
 - (void)processInfo {
+    if (!self.text.isNotEmpty) {
+        self.undoButton.enabled = YES;
+        self.text = [UIPasteboard generalPasteboard].string;
+    }
+    
     NSString *folderName = [RBShareTextModel folderNameWithText:self.text];
-    NSString *folderPath = [[RBFileManager shareExtensionShareImagesGroupContainerFolderPath] stringByAppendingPathComponent:folderName];
-    [RBFileManager createFolderAtPath:folderPath];
+    self.destFolderPath = [[RBFileManager shareExtensionShareImagesGroupContainerFolderPath] stringByAppendingPathComponent:folderName];
+    [RBFileManager createFolderAtPath:self.destFolderPath];
     
     NSString *fileContents = @"";
     for (NSInteger i = 0; i < self.imageFilePaths.count; i++) {
         NSString *originPath = self.imageFilePaths[i];
-        NSString *destPath = [folderPath stringByAppendingPathComponent:originPath.lastPathComponent];
+        NSString *destPath = [self.destFolderPath stringByAppendingPathComponent:originPath.lastPathComponent];
         
         [RBFileManager moveItemFromPath:originPath toPath:destPath];
         [[RBLogManager defaultManager] addDefaultLogWithFormat:@"移动前: %@", originPath];
@@ -182,7 +190,7 @@ static NSInteger const maxTimerCountDown = 30;
     outputString = [outputString stringByAppendingFormat:@"%@\n", fileContents];
     outputString = [outputString stringByAppendingString:@"------------------------------------------------------------\n"];
     // 文件夹以及目的地内容
-    outputString = [outputString stringByAppendingFormat:@"目标文件夹: %@\n共移动 %ld 条图片至目标文件夹\n目标文件夹大小: %@", folderName, [RBFileManager filePathsInFolder:folderPath].count, [RBFileManager folderSizeDescriptionAtPath:folderPath]];
+    outputString = [outputString stringByAppendingFormat:@"目标文件夹: %@\n共移动 %ld 条图片至目标文件夹\n目标文件夹大小: %@", folderName, [RBFileManager filePathsInFolder:self.destFolderPath].count, [RBFileManager folderSizeDescriptionAtPath:self.destFolderPath]];
     
     self.statusTextView.text = outputString;
 }
@@ -233,6 +241,24 @@ static NSInteger const maxTimerCountDown = 30;
 }
 
 #pragma mark - IBAction
+- (IBAction)undoRenameButtonDidPress:(UIButton *)sender {
+    self.text = nil;
+    NSString *folderName = [RBShareTextModel folderNameWithText:self.text];
+    NSString *folderPath = [[RBFileManager shareExtensionShareImagesGroupContainerFolderPath] stringByAppendingPathComponent:folderName];
+    
+    NSString *outputString = [NSString stringWithFormat:@"%@\n", self.statusTextView.text];
+    outputString = [outputString stringByAppendingString:@"------------------------------------------------------------\n"];
+    outputString = [outputString stringByAppendingFormat:@"将文件夹: %@, 更名为: %@", self.destFolderPath.lastPathComponent, folderPath.lastPathComponent];
+    
+    [RBFileManager moveItemFromPath:self.destFolderPath toPath:folderPath];
+    [[RBLogManager defaultManager] addDefaultLogWithFormat:@"移动前: %@", self.destFolderPath];
+    [[RBLogManager defaultManager] addDefaultLogWithFormat:@"移动后: %@", folderPath];
+    
+    self.destFolderPath = folderPath;
+    self.undoButton.enabled = NO;
+    
+    self.statusTextView.text = outputString;
+}
 - (IBAction)closeButtonDidPress:(UIButton *)sender {
     [self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
 }

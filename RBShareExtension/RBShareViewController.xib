@@ -13,6 +13,7 @@
                 <outlet property="closeButton" destination="F3C-1E-Jgj" id="pQO-kh-szA"/>
                 <outlet property="indicator" destination="fLP-Vp-Msa" id="nhU-1c-gjc"/>
                 <outlet property="statusTextView" destination="juH-8s-Bqk" id="WXo-Cs-u4p"/>
+                <outlet property="undoButton" destination="lA8-dM-07k" id="Nih-D6-XLH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="waitingLabel" destination="x4W-6Z-loi" id="eNS-Pd-NxJ"/>
                 <outlet property="waitingView" destination="jIm-kb-VLa" id="Vh8-3v-yGm"/>
@@ -24,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="juH-8s-Bqk">
-                    <rect key="frame" x="0.0" y="44" width="414" height="781"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="731"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -67,19 +68,28 @@
                         <action selector="closeButtonDidPress:" destination="-1" eventType="touchUpInside" id="Qd3-7z-M4H"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lA8-dM-07k">
+                    <rect key="frame" x="168.5" y="795" width="77" height="30"/>
+                    <state key="normal" title="撤销重命名"/>
+                    <connections>
+                        <action selector="undoRenameButtonDidPress:" destination="-1" eventType="touchUpInside" id="qQA-Ok-gxb"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="F3C-1E-Jgj" firstAttribute="top" secondItem="lA8-dM-07k" secondAttribute="bottom" id="042-oV-hfq"/>
                 <constraint firstItem="jIm-kb-VLa" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="1uE-ic-FcV"/>
+                <constraint firstItem="lA8-dM-07k" firstAttribute="top" secondItem="juH-8s-Bqk" secondAttribute="bottom" constant="20" id="2n2-E8-XJl"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="F3C-1E-Jgj" secondAttribute="trailing" constant="10" id="E8l-ac-f4A"/>
+                <constraint firstItem="lA8-dM-07k" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qxp-eO-a5x"/>
                 <constraint firstItem="juH-8s-Bqk" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="SVr-fI-KTh"/>
                 <constraint firstItem="jIm-kb-VLa" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="WX1-PQ-r3m"/>
                 <constraint firstItem="juH-8s-Bqk" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="abK-Oq-qDS"/>
                 <constraint firstItem="juH-8s-Bqk" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="fFy-VK-9Kv"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="F3C-1E-Jgj" secondAttribute="bottom" id="gPE-L8-s0U"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="jIm-kb-VLa" secondAttribute="trailing" id="uh3-NI-vWN"/>
-                <constraint firstItem="F3C-1E-Jgj" firstAttribute="top" secondItem="juH-8s-Bqk" secondAttribute="bottom" id="xCd-ZA-xsm"/>
             </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="112.5"/>
         </view>
