@@ -68,7 +68,7 @@
                         <action selector="closeButtonDidPress:" destination="-1" eventType="touchUpInside" id="Qd3-7z-M4H"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lA8-dM-07k">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lA8-dM-07k">
                     <rect key="frame" x="168.5" y="795" width="77" height="30"/>
                     <state key="normal" title="撤销重命名"/>
                     <connections>

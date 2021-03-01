@@ -12,6 +12,21 @@
 - (instancetype)initWithText:(NSString *)text {
     self = [super init];
     if (self) {
+        // 去除文字中的链接
+        NSError *linkError = nil;
+        NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:&linkError];
+        NSArray<NSTextCheckingResult *> *linkResults = [detector matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+        NSArray<NSDictionary *> *links = [linkResults bk_map:^NSDictionary *(NSTextCheckingResult *obj) {
+            return @{@"location": @(obj.range.location), @"result": obj};
+        }];
+        // 倒序去处
+        links = [links sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"location" ascending:NO]]];
+        for (NSInteger i = 0; i < links.count; i++) {
+            NSDictionary *linkDict = links[i];
+            NSTextCheckingResult *tcResult = linkDict[@"result"];
+            text = [text stringByReplacingCharactersInRange:tcResult.range withString:@" "];
+        }
+        
         _userName = @"[未找到用户名]";
         _text = text;
         _dateString = [[NSDate date] stringWithFormat:RBTimeFormatyMdHmsSCompact];
@@ -54,13 +69,13 @@
     NSString *folderName = [NSString stringWithFormat:@"%@+", model.userName];
 
     // 2、添加标签以及文字
-    NSError *error;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"#[^#]+#" options:NSRegularExpressionCaseInsensitive error:&error];
-    NSArray *results = [regex matchesInString:model.text options:0 range:NSMakeRange(0, model.text.length)];
-    if (error) {
-        [[RBLogManager defaultManager] addErrorLogWithFormat:@"正则解析微博文字中的标签出错，原因：%@", error.localizedDescription];
+    NSError *atError;
+    NSRegularExpression *atRegex = [NSRegularExpression regularExpressionWithPattern:@"#[^#]+#" options:NSRegularExpressionCaseInsensitive error:&atError];
+    NSArray *atResults = [atRegex matchesInString:model.text options:0 range:NSMakeRange(0, model.text.length)];
+    if (atError) {
+        [[RBLogManager defaultManager] addErrorLogWithFormat:@"正则解析微博文字中的标签出错，原因：%@", atError.localizedDescription];
     }
-    if (results.count == 0) {
+    if (atResults.count == 0) {
         // 2.1、没有标签的话，截取前100个文字
         if (model.text.length <= 100) {
             folderName = [folderName stringByAppendingFormat:@"[无标签]+%@+", model.text];
@@ -69,8 +84,8 @@
         }
     } else {
         // 2.2.1、有标签的话，先添加所有标签
-        for (NSInteger i = 0; i < results.count; i++) {
-            NSTextCheckingResult *result = results[i];
+        for (NSInteger i = 0; i < atResults.count; i++) {
+            NSTextCheckingResult *result = atResults[i];
             NSString *hashtag = [model.text substringWithRange:result.range];
             hashtag = [hashtag stringByReplacingOccurrencesOfString:@"#" withString:@""];
             folderName = [folderName stringByAppendingFormat:@"%@+", hashtag];
@@ -78,8 +93,8 @@
 
         // 2.2.2、再添加前30个文字
         NSString *noTagText = model.text;
-        for (NSInteger i = results.count - 1; i >= 0; i--) {
-            NSTextCheckingResult *result = results[i];
+        for (NSInteger i = atResults.count - 1; i >= 0; i--) {
+            NSTextCheckingResult *result = atResults[i];
             noTagText = [noTagText stringByReplacingCharactersInRange:result.range withString:@""];
         }
         noTagText = noTagText.removeEmoji; // 去除Emoji
@@ -102,9 +117,12 @@
     // 4、防止有 / 出现以及其他特殊字符
     folderName = [folderName stringByReplacingOccurrencesOfString:@"/" withString:@" "];
     folderName = [folderName stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-    folderName = [folderName stringByReplacingOccurrencesOfString:@"🪆" withString:@" "];
     
-    // 5、长度超过100的文件夹无法保存在Synology NAS中，因此截取超过100长度的文件夹名称
+    // 5、防止出现 特殊字符
+    folderName = [folderName stringByReplacingOccurrencesOfString:@"🪆" withString:@" "];
+    folderName = [folderName stringByReplacingOccurrencesOfString:@"🪝" withString:@" "];
+    
+    // 6、长度超过100的文件夹无法保存在Synology NAS中，因此截取超过100长度的文件夹名称
     if (folderName.length >= 100) {
         NSString *timeString = [folderName substringFromIndex:folderName.length - 17];
         folderName = [folderName substringToIndex:folderName.length - 18];

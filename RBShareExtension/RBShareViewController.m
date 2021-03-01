@@ -160,7 +160,7 @@ static NSInteger const maxTimerCountDown = 30;
 #pragma mark - Process
 - (void)processInfo {
     if (!self.text.isNotEmpty) {
-        self.undoButton.enabled = YES;
+        self.undoButton.hidden = NO;
         self.text = [UIPasteboard generalPasteboard].string;
     }
     
