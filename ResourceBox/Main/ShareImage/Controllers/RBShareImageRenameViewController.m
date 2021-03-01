@@ -61,6 +61,11 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
+- (IBAction)jumpButtonDidPress:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:RBShareImageNeedShowImageFilesNotification object:@(self.index)];
+    }];
+}
 
 #pragma mark - UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView { // 在该代理方法中实现实时监听uitextview的输入

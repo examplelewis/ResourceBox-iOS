@@ -26,7 +26,7 @@ static NSString * const RBTimeFormatyMdHmsCompact = @"yyyyMMddHHmmss";
 static NSString * const RBTimeFormatyMdHmsSCompact = @"yyyyMMddHHmmssSSS";
 
 // Notification Key
-static NSString * const RBDidGetWeiboTokenNotification = @"com.gongyu.MyUniqueBox.RBDidGetWeiboTokenNotification";
+static NSString * const RBShareImageNeedShowImageFilesNotification = @"com.gongyu.ResourceBox.shareImageNeedShowImageFilesNotification";
 
 // Warning
 static NSString * const RBWarningNoneContentFoundInInputTextView = @"没有获得任何输入内容，请检查输入框";

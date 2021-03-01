@@ -32,6 +32,7 @@
     [self.tableView.mj_header beginRefreshing];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needShowImageFiles:) name:RBShareImageNeedShowImageFilesNotification object:nil];
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -121,6 +122,11 @@
 #pragma mark - Notification
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
     [self.tableView.mj_header beginRefreshing];
+}
+- (void)needShowImageFiles:(NSNotification *)notification {
+    NSInteger index = [notification.object integerValue];
+    RBShareImageFilesViewController *vc = [[RBShareImageFilesViewController alloc] initWithFolderPath:self.listData[index][@"folderPath"] andUsername:self.listData[index][@"name"]];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - RBShareImageRenameDelegate
