@@ -15,6 +15,7 @@ static NSInteger const maxTimerCountDown = 30;
 @interface RBShareViewController ()
 
 @property (nonatomic, copy) NSArray *imageFilePaths;
+@property (nonatomic, copy) NSArray *videoFilePaths;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, assign) NSInteger loadCount;
@@ -65,6 +66,7 @@ static NSInteger const maxTimerCountDown = 30;
     
     // Data
     self.imageFilePaths = @[];
+    self.videoFilePaths = @[];
     self.loadCount = 0;
     self.startDate = [NSDate date];
     
@@ -125,8 +127,25 @@ static NSInteger const maxTimerCountDown = 30;
         }];
     }
     if ([provider hasItemConformingToTypeIdentifier:@"public.url"]) {
-        [self readItemsAtIndex:index + 1];
+        if ([provider hasItemConformingToTypeIdentifier:@"public.file-url"]) {
+            // do nothing...
+        } else {
+            [self readItemsAtIndex:index + 1];
+        }
     }
+    
+    if ([provider hasItemConformingToTypeIdentifier:@"public.mpeg-4"]) {
+        [provider loadItemForTypeIdentifier:@"public.mpeg-4" options:nil completionHandler:^(NSURL *fileURL, NSError * _Null_unspecified error) {
+            @strongify(self);
+            
+            [self processVideoURL:fileURL];
+            
+            [self readItemsAtIndex:index + 1];
+        }];
+    }
+//    if ([provider hasItemConformingToTypeIdentifier:@"com.apple.avfoundation.urlasset"]) {
+//        [self readItemsAtIndex:index + 1];
+//    }
 }
 - (void)processData:(NSData *)data atIndex:(NSInteger)index {
     NSString *fileNamePrefix = [NSString stringWithFormat:@"%@", self.startDate];
@@ -138,6 +157,16 @@ static NSInteger const maxTimerCountDown = 30;
     [data writeToFile:imageFilePath atomically:YES];
     
     self.imageFilePaths = [self.imageFilePaths arrayByAddingObject:imageFilePath];
+}
+- (void)processVideoURL:(NSURL *)fileURL {
+    NSString *fileNamePrefix = [NSString stringWithFormat:@"%@", self.startDate];
+    NSString *fileNameAndExt = [NSString stringWithFormat:@"%@.mp4", fileNamePrefix.md5String];
+    NSString *targetFilePath = [RBFileManager shareExtensionFilePathForShareImageWithName:fileNameAndExt];
+    
+    NSString *originFilePath = [fileURL.absoluteString stringByReplacingOccurrencesOfString:@"file://" withString:@""];
+    [RBFileManager copyItemFromPath:originFilePath toPath:targetFilePath];
+    
+    self.videoFilePaths = [self.videoFilePaths arrayByAddingObject:targetFilePath];
 }
 - (void)finishReadItems {
     @weakify(self);
@@ -179,12 +208,22 @@ static NSInteger const maxTimerCountDown = 30;
         
         fileContents = [fileContents stringByAppendingFormat:@"%@\t\t%@%@", destPath.lastPathComponent, [RBFileManager fileSizeDescriptionAtPath:destPath], i == self.imageFilePaths.count - 1 ? @"" : @"\n"];
     }
+    for (NSInteger i = 0; i < self.videoFilePaths.count; i++) {
+        NSString *originPath = self.videoFilePaths[i];
+        NSString *destPath = [self.destFolderPath stringByAppendingPathComponent:originPath.lastPathComponent];
+        
+        [RBFileManager moveItemFromPath:originPath toPath:destPath];
+        [[RBLogManager defaultManager] addDefaultLogWithFormat:@"移动前: %@", originPath];
+        [[RBLogManager defaultManager] addDefaultLogWithFormat:@"移动后: %@", destPath];
+        
+        fileContents = [fileContents stringByAppendingFormat:@"%@\t\t%@%@", destPath.lastPathComponent, [RBFileManager fileSizeDescriptionAtPath:destPath], i == self.videoFilePaths.count - 1 ? @"" : @"\n"];
+    }
     
     // 微博内容
     NSString *outputString = [NSString stringWithFormat:@"微博内容:\n\t%@\n", self.text];
     outputString = [outputString stringByAppendingString:@"------------------------------------------------------------\n"];
     // Share Extension
-    outputString = [outputString stringByAppendingFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%ld 条 public.image\n", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.imageFilePaths.count];
+    outputString = [outputString stringByAppendingFormat:@"%ld 条 items\n%ld 条 itemsProvider\n%d 条 public.plain-text\n%ld 条 public.image\n%ld 条 public.video\n", self.extensionContext.inputItems.count, ((NSExtensionItem *)self.extensionContext.inputItems.firstObject).attachments.count, self.text ? 1 : 0, self.imageFilePaths.count, self.videoFilePaths.count];
     outputString = [outputString stringByAppendingString:@"------------------------------------------------------------\n"];
     // 文件具体内容
     outputString = [outputString stringByAppendingFormat:@"%@\n", fileContents];
