@@ -26,6 +26,8 @@
             NSTextCheckingResult *tcResult = linkDict[@"result"];
             text = [text stringByReplacingCharactersInRange:tcResult.range withString:@" "];
         }
+        // 去除Emoji
+        text = [text removeEmoji];
         
         _userName = @"[未找到用户名]";
         _text = text;
@@ -97,7 +99,6 @@
             NSTextCheckingResult *result = atResults[i];
             noTagText = [noTagText stringByReplacingCharactersInRange:result.range withString:@""];
         }
-        noTagText = noTagText.removeEmoji; // 去除Emoji
         
         if (noTagText.length <= 30) {
             folderName = [folderName stringByAppendingFormat:@"%@+", noTagText];
