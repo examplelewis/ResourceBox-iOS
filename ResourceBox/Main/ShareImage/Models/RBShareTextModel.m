@@ -114,8 +114,18 @@
         folderName = [folderName substringToIndex:folderName.length - 1];
     }
 
-    // 4、防止有 / 出现以及其他特殊字符
+    // 4、防止有 OneDrive禁止出现的字符
+    folderName = [folderName stringByReplacingOccurrencesOfString:@"*" withString:@" "];
+    folderName = [folderName stringByReplacingOccurrencesOfString:@"?" withString:@" "];
+    folderName = [folderName stringByReplacingOccurrencesOfString:@"\\" withString:@" "];
+    folderName = [folderName stringByReplacingOccurrencesOfString:@"\"" withString:@" "];
+    folderName = [folderName stringByReplacingOccurrencesOfString:@"“" withString:@" "];
+    folderName = [folderName stringByReplacingOccurrencesOfString:@"”" withString:@" "];
+    folderName = [folderName stringByReplacingOccurrencesOfString:@"<" withString:@" "];
+    folderName = [folderName stringByReplacingOccurrencesOfString:@">" withString:@" "];
+    folderName = [folderName stringByReplacingOccurrencesOfString:@"|" withString:@" "];
     folderName = [folderName stringByReplacingOccurrencesOfString:@"/" withString:@" "];
+    folderName = [folderName stringByReplacingOccurrencesOfString:@":" withString:@" "];
     folderName = [folderName stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     
     // 5、防止出现 特殊字符
