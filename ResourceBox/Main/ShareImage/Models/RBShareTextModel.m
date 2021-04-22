@@ -134,10 +134,10 @@
     folderName = [folderName stringByReplacingOccurrencesOfString:@"🪝" withString:@" "];
     
     // 6、长度超过100的文件夹无法保存在Synology NAS中，因此截取超过100长度的文件夹名称
-    if (folderName.length >= 100) {
+    if (folderName.length >= 98) {
         NSString *timeString = [folderName substringFromIndex:folderName.length - 17];
         folderName = [folderName substringToIndex:folderName.length - 18];
-        folderName = [folderName substringToIndex:81];
+        folderName = [folderName substringToIndex:79];
         folderName = [folderName stringByAppendingFormat:@"+%@", timeString];
     }
 
