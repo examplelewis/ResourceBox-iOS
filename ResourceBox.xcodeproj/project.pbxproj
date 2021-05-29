@@ -1228,7 +1228,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 58913FA3D7E31C8C4431D386 /* Pods-RBShareExtension.debug.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = RBShareExtension/RBShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2G352K7NR7;
@@ -1252,7 +1252,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8C7A9CDDB30630088DE335A /* Pods-RBShareExtension.release.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = RBShareExtension/RBShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2G352K7NR7;
